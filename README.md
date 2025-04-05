@@ -37,7 +37,7 @@ vLearn is an AI-powered personal tutor that leverages advanced machine learning 
 
 ### 1. Clone the Repository
 ```bash
-git clone https://github.com/Aparna0224/Karunya_Project_X.git
+git clone https://github.com/Klassy01/Karunya_Project-X.git
 cd your-repo
 ```
 
@@ -240,4 +240,4 @@ The **vLearn** project offers a comprehensive, scalable, and intelligent solutio
 
 ## For more info Contact
  Email - aparna6024@gmail.com
- Phone - 9176398947
+ Phone - +91 9176398947
