@@ -1,3 +1,4 @@
+
 # T5-Based Multiple-Choice Question (MCQ) Generator
 
 ## Overview
@@ -29,17 +30,17 @@ This repository contains a fine-tuned [T5 (Text-to-Text Transfer Transformer)](h
 
 The MCQ Generator is a fine-tuned version of the T5 model, adapted to transform input text into coherent and contextually relevant multiple-choice questions. This adaptation leverages the T5 architecture's text-to-text framework to facilitate educational content creation.
 
-- **Developed by:** [Your Name or Organization]
-- **Contact:** [Your Contact Information]
-- **Model Type:** Text-to-Text Generation
-- **Language:** English
-- **License:** [Specify License, e.g., MIT, Apache 2.0]
+- **Developed by:** [Your Name or Organization]  
+- **Contact:** [Your Contact Information]  
+- **Model Type:** Text-to-Text Generation  
+- **Language:** English  
+- **License:** [Specify License, e.g., MIT, Apache 2.0]  
 - **Fine-tuned from:** [Base T5 Model Version, e.g., t5-base]
 
 ### Model Sources
 
-- **Repository:** [Link to your model repository]
-- **Paper (optional):** [Link to any related publication]
+- **Repository:** [Link to your model repository]  
+- **Paper (optional):** [Link to any related publication]  
 - **Demo (optional):** [Link to an interactive demo]
 
 ## Usage
@@ -50,9 +51,11 @@ To utilize the MCQ Generator, install the necessary Python packages:
 
 ```bash
 pip install torch transformers streamlit
+```
 
-###Generating MCQs
-##Below is an example of how to use the model to generate MCQs:
+### Generating MCQs
+
+Below is an example of how to use the model to generate MCQs:
 
 ```python
 import streamlit as st
@@ -116,7 +119,8 @@ if st.button("Generate MCQs"):
                         st.success(line)
     else:
         st.warning("Please enter some text to generate MCQs.")
-```python
+```
+
 ## Training Details
 
 ### Training Data
@@ -128,12 +132,10 @@ The model was fine-tuned on a dataset comprising educational texts and correspon
 The fine-tuning process involved:
 
 - **Preprocessing:** Formatting input texts with prompts indicating MCQ generation tasks.
-
 - **Hyperparameters:**
   - **Batch size:** [Specify batch size]
   - **Learning rate:** [Specify learning rate]
   - **Number of epochs:** [Specify number of epochs]
-
 - **Optimization:** Utilized [Optimizer Name, e.g., AdamW] with appropriate learning rate scheduling.
 
 ## Evaluation
@@ -146,8 +148,8 @@ The model was evaluated using a separate dataset containing educational texts an
 
 Evaluation metrics included:
 
-- **BLEU Score:** [Insert score]
-- **ROUGE Score:** [Insert score]
+- **BLEU Score:** [Insert score]  
+- **ROUGE Score:** [Insert score]  
 - **Human Evaluation:** [Summarize findings, e.g., "80% of generated questions were deemed appropriate by experts."]
 
 ## Limitations and Recommendations
@@ -155,18 +157,30 @@ Evaluation metrics included:
 While the model aims to generate relevant MCQs, users should be aware of potential biases and limitations:
 
 - **Biases:** Outputs may reflect biases present in the training data. It's essential to review generated questions for cultural, gender, or other biases.
-
 - **Accuracy:** The model may occasionally produce questions that are ambiguous or not entirely aligned with the input text.
-
 - **Context Limitation:** The model's understanding is based solely on the provided input text and does not incorporate external knowledge beyond its training data.
 
 **Recommendations:**
 
 - Manually review and edit generated MCQs to ensure clarity and relevance.
-
 - Be cautious of potential biases and strive to create inclusive and fair assessment items.
-
 - Test the model's outputs across diverse topics to gauge its performance and limitations.
 
-## Drive Link For Model
-https://drive.google.com/file/d/1lU0FfmVBCMJcf-_r4uJNB1EoTCQc9OqG/view?usp=drive_link
+## Environmental Impact
+
+[Optional: Add notes about compute resources used, carbon footprint, etc.]
+
+## Citation
+
+[Optional: Provide citation info if publishing or citing your work.]
+
+## Contact
+
+For queries or collaboration, reach out to:
+
+- **Email:** [Your Contact Email]
+- **GitHub:** [Link to your GitHub]
+
+## Drive Link for Model
+
+[Click here to download the model from Google Drive](https://drive.google.com/uc?export=download&id=1lU0FfmVBCMJcf-_r4uJNB1EoTCQc9OqG)
