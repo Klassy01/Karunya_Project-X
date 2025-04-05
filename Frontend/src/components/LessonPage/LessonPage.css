@@ -1,0 +1,113 @@
+/* LessonPage.css */
+
+body {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #f9fafb;
+  margin: 0;
+  padding: 0;
+  color: #1f2937; /* slate-800 */
+}
+
+.course-container {
+  max-width: 900px;
+  margin: 50px auto;
+  padding: 30px;
+  background-color: #ffffff;
+  border-radius: 16px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+  transition: all 0.3s ease-in-out;
+}
+
+h1 {
+  font-size: 2.5rem;
+  color: #111827; /* slate-900 */
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+h2 {
+  font-size: 1.5rem;
+  color: #374151; /* slate-700 */
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+p {
+  font-size: 1rem;
+  line-height: 1.6;
+  margin-bottom: 25px;
+  color: #4b5563; /* slate-600 */
+  text-align: center;
+}
+
+.lesson-card {
+  padding: 25px;
+  border-left: 6px solid #3b82f6; /* blue-500 */
+  background-color: #f3f4f6; /* slate-100 */
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+  margin-top: 30px;
+}
+
+.lesson-card h3 {
+  font-size: 1.3rem;
+  color: #1d4ed8; /* blue-700 */
+  margin-bottom: 12px;
+  text-align: left;
+}
+
+.lesson-card p {
+  font-size: 1rem;
+  color: #374151;
+  margin-bottom: 15px;
+  text-align: left;
+}
+
+.lesson-content {
+  background-color: #ffffff;
+  color: #111827;
+  padding: 20px;
+  font-family: "Courier New", Courier, monospace;
+  font-size: 0.95rem;
+  line-height: 1.6;
+  border-radius: 8px;
+  white-space: pre-wrap;
+  overflow-x: auto;
+  border: 1px solid #e5e7eb; /* slate-200 */
+  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.04);
+  margin-bottom: 20px;
+}
+
+/* Button Styling */
+button {
+  background-color: #2563eb; /* blue-600 */
+  color: white;
+  border: none;
+  padding: 12px 24px;
+  border-radius: 8px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.2s ease-in-out;
+  display: block;
+  margin: 0 auto;
+}
+
+button:hover {
+  background-color: #1e40af; /* blue-800 */
+}
+
+/* Completion Message Styling */
+.completion-message {
+  padding: 40px;
+  background-color: #ecfdf5; /* green-50 */
+  border: 2px dashed #10b981; /* green-500 */
+  border-radius: 16px;
+  text-align: center;
+  margin-top: 40px;
+}
+
+.completion-message h2 {
+  font-size: 1.8rem;
+  color: #065f46; /* green-800 */
+  margin: 0;
+}

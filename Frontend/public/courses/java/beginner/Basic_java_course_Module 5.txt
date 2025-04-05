@@ -1,0 +1,191 @@
+Module 5: Graphical User Interface (GUI) Development
+
+5.1 Introduction to GUI Programming
+
+-Overview of AWT, Swing, and JavaFX
+
+Java provides three GUI frameworks: AWT, Swing, and JavaFX.
+
+AWT (Abstract Window Toolkit): Oldest framework, built on native OS components.
+
+Swing: More advanced than AWT, provides lightweight components.
+
+JavaFX: Modern framework, supports rich UI, 2D/3D graphics, CSS styling.
+
+Swing and JavaFX are more flexible and platform-independent.
+
+Event-driven model allows handling user interactions dynamically.
+
+JavaFX is now the preferred framework for modern GUI development.
+
+-Event-Driven Programming
+
+Java GUI frameworks follow an event-driven programming model.
+
+Events: User interactions like mouse clicks, key presses, and window actions.
+
+Event Listeners: Interfaces that handle specific events (ActionListener, MouseListener).
+
+Event Source: The component that generates an event (e.g., a button).
+
+Event Handling: Uses callback methods to respond to user input.
+
+Swing uses the Event Dispatch Thread (EDT) for handling events asynchronously.
+
+5.2 Building User Interfaces with Swing
+
+-Creating Windows with JFrame
+
+JFrame is the main container for Swing applications.
+
+Extends java.awt.Frame, provides a window with a title bar.
+
+Components (JButton, JLabel, etc.) are added to content pane.
+
+setSize() defines dimensions; setVisible(true) makes it appear.
+
+Default close operation is EXIT_ON_CLOSE to terminate the program.
+
+-Adding Components (Buttons, TextFields, Labels)
+
+Swing provides UI components:
+
+JButton (Clickable button for user interaction).
+
+JTextField (Input field for text).
+
+JLabel (Displays static text).
+
+Components are added to JFrame’s content pane.
+
+-Layout Managers
+
+Swing uses Layout Managers to control component arrangement.
+
+FlowLayout: Left to right, wraps content.
+
+BorderLayout: Divides UI into NORTH, SOUTH, EAST, WEST, CENTER.
+
+GridLayout: Arranges components in equal-sized grid cells.
+
+-Event Handling and Listeners
+
+Swing events are handled using event listeners:
+
+ActionListener: Handles button clicks.
+
+MouseListener: Captures mouse events.
+
+KeyListener: Detects keyboard input.
+
+5.3 Advanced Swing Components
+
+-Menus and Toolbars
+
+Swing provides menus and toolbars for organizing actions in a structured way.
+
+JMenuBar: Holds multiple menus (JMenu).
+
+JMenu: Represents a drop-down menu containing menu items.
+
+JMenuItem: Represents individual actions inside a menu.
+
+JToolBar: Holds quick-access buttons and controls.
+
+Supports keyboard shortcuts via setMnemonic().
+
+Menus and toolbars improve application usability and accessibility.
+
+-Dialogs and Pop-ups
+
+Swing provides dialog boxes and pop-ups to interact with users.
+
+JOptionPane: Standard pop-ups for alerts, confirmations, and input prompts.
+
+JDialog: Customizable modal windows for form inputs or settings dialogs.
+
+Types of Dialogs: showMessageDialog(), showConfirmDialog(), showInputDialog().
+
+Pop-ups help provide feedback, warnings, or user interactions.
+
+-Tables and Trees
+
+Swing provides JTable and JTree for displaying structured data.
+
+JTable: Displays tabular data with rows and columns.
+
+JTree: Displays hierarchical structures (like file directories).
+
+Editable Cells: JTable allows cell modifications.
+
+Sorting and Filtering: RowSorter enables dynamic sorting.
+
+Tree Expansion: JTree nodes can be expanded or collapsed.
+
+5.4 JavaFX Overview
+
+-Setting Up JavaFX
+
+JavaFX is a modern UI framework for building rich desktop applications.
+
+JavaFX requires JDK 11+ or an external JavaFX SDK (for JDK 8).
+
+Modules Required: javafx.controls, javafx.fxml, javafx.graphics.
+
+Installation Steps:
+
+Download JavaFX SDK.
+
+Add JavaFX libraries to the classpath.
+
+Use --module-path and --add-modules flags to run JavaFX programs.
+
+FXML Support: Separates UI design from logic for cleaner architecture.
+
+-Building UI with FXML
+
+FXML is an XML-based markup language for JavaFX UI design.
+
+Separates UI from logic: UI is in .fxml files, logic in Java controllers.
+
+FXML Elements: Define UI components (<Button>, <VBox>, <Label>).
+
+Controller Class: Handles events (@FXML private Button myButton).
+
+FXMLLoader: Loads .fxml files dynamically:
+
+FXMLLoader.load(getClass().getResource("sample.fxml"));
+Improves code maintainability and supports scalable UI design.
+
+-Styling with CSS
+
+JavaFX supports CSS-based styling, enhancing UI customization.
+
+CSS Selectors: JavaFX uses -fx- properties (-fx-background-color, -fx-font-size).
+
+External Stylesheets: Linked using scene.getStylesheets().add("style.css").
+
+Inline Styling: Applied via setStyle("-fx-background-color: red;").
+
+ID and Class Selectors:
+
+css
+#myButton { -fx-background-color: blue; }
+.rounded { -fx-border-radius: 10px; }
+Consistent Theming: Enables easy UI customization and maintenance.
+
+-Animations and Effects
+
+JavaFX supports built-in animations using the javafx.animation package.
+
+Types of Animations:
+
+TranslateTransition (movement)
+
+FadeTransition (opacity changes)
+
+ScaleTransition (size changes)
+
+RotateTransition (rotation effects)
+
+Timeline Animations: Enable frame-based animations using KeyFrame.

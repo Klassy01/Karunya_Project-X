@@ -1,0 +1,275 @@
+Module 4: Advanced Java Concepts
+
+4.1 Generics
+
+-Generic Classes and Methods
+
+Generics enhance reusability, scalability, and performance by ensuring strong type checking.
+
+Multiple type parameters can be used: class Pair<K, V> {}.
+
+Generic interfaces allow flexibility, such as Comparable<T>.
+
+Type inference (diamond operator <>) reduces redundancy in object creation.
+
+Example of a bounded generic method:
+
+public static <T extends Number> double sum(T num1, T num2) {  
+    return num1.doubleValue() + num2.doubleValue();  
+}
+Generics are widely used in frameworks like Spring and Hibernate for writing scalable applications.
+
+-Bounded Type Parameters
+
+Multiple bounded type parameters allow flexible constraints:
+
+T extends Number & Serializable ensures T is both a Number and Serializable.
+
+Wildcards (? extends) enable covariance and contravariance, allowing flexible type matching.
+
+Example:
+
+public static void display(List<? extends Number> list) {  
+    for (Number num : list) System.out.println(num);  
+}
+Here, List<Integer> and List<Double> are both valid arguments.
+This ensures type safety, flexibility, and cleaner code in Java applications.
+
+-Generics and the Collections Framework
+
+Generics enhance performance, maintainability, and scalability in Java collections.
+
+Type inference (<>) simplifies object creation.
+
+Generic methods allow flexible collection operations.
+
+Wildcard bounds (? extends, ? super) enable efficient polymorphic behavior.
+
+Example of a method that accepts different generic collections:
+
+public static <T> void copyElements(List<T> source, List<? super T> dest) {  
+    for (T item : source) dest.add(item);  
+}
+This method copies elements between lists while maintaining type safety.
+Generics ensure collections are robust and scalable for large applications.
+
+4.2 Multithreading and Concurrency
+
+-Creating and Managing Threads
+
+Thread management in Java involves scheduling, lifecycle handling, and resource sharing.
+
+Java uses preemptive scheduling, where the JVM decides thread execution order.
+
+ExecutorService provides thread pooling, improving performance over manually managing threads.
+
+Daemon threads (setDaemon(true)) run in the background (e.g., garbage collection).
+
+ThreadGroup organizes multiple threads for easier management.
+
+Thread Interruption: interrupt() sends a signal but does not forcefully stop execution.
+
+Volatile variables ensure visibility of changes across threads but do not guarantee atomicity.
+
+-Synchronization and Thread Safety
+
+Synchronization prevents race conditions, where multiple threads modify shared data unpredictably.
+
+Intrinsic Locks: Each Java object has a built-in lock that synchronized methods acquire.
+
+wait(), notify(), and notifyAll() facilitate thread communication inside synchronized blocks.
+
+Reentrant Lock (ReentrantLock): More flexible alternative to synchronized.
+
+Performance overhead: Excessive locking reduces efficiency, leading to thread contention.
+
+volatile prevents caching issues, ensuring real-time value updates across threads.
+
+-Concurrency Utilities
+
+Advanced concurrency utilities help optimize complex multithreaded applications.
+
+ForkJoinPool efficiently handles divide-and-conquer tasks using the work-stealing algorithm.
+
+CompletableFuture allows asynchronous computations with dependency chaining.
+
+Concurrent collections (ConcurrentHashMap, CopyOnWriteArrayList) improve performance by eliminating explicit synchronization.
+
+StampedLock provides optimistic and pessimistic locks to balance speed and safety.
+
+Java 21 introduces Virtual Threads (java.lang.Thread.ofVirtual()), lightweight threads that improve scalability in concurrent applications.
+
+Proper use of concurrency utilities ensures high-performance and scalable applications.
+
+
+
+4.3 Networking
+
+-Java Networking APIs
+
+Advanced Java networking involves efficient connection management, security, and scalability.
+
+Non-blocking I/O (java.nio.channels) improves performance in high-traffic applications.
+
+AsynchronousSocketChannel and AsynchronousServerSocketChannel handle large concurrent connections.
+
+SSL/TLS (SSLSocket) ensures encrypted and secure communication.
+
+WebSockets (javax.websocket) enable real-time, two-way communication in web applications.
+
+Proxy and Authenticator classes support proxy-based connections and authentication.
+
+Java 11 introduced java.net.http.HttpClient, which improves HTTP performance using asynchronous requests and multiplexing.
+
+-Working with URLs and Sockets
+
+Socket communication requires managing buffered input/output streams for efficient data transfer.
+
+NIO (java.nio.channels) allows non-blocking socket communication, enhancing scalability.
+
+WebSockets (javax.websocket.Session) provide persistent connections without repeated HTTP requests.
+
+SocketFactory enables secure socket connections (SSLSocketFactory).
+
+Java supports network security via TLS, authentication, and firewalls.
+
+Proper connection pooling and Keep-Alive headers improve performance in large-scale applications.
+
+-Building Client-Server Applications
+
+Multithreaded servers (ThreadPoolExecutor) prevent resource overuse in high-traffic applications.
+
+Java 7 introduced Asynchronous Sockets (AsynchronousServerSocketChannel), enabling event-driven networking.
+
+RESTful services (JAX-RS) allow Java applications to act as web servers.
+
+WebSocket API (javax.websocket) is ideal for real-time chat, gaming, and financial applications.
+
+Load balancers distribute client requests across multiple servers for scalability.
+
+Security mechanisms, such as SSL/TLS encryption and authentication tokens, protect against cyber threats.
+
+4.4 Lambda Expressions and Functional Interfaces
+
+-Syntax and Usage of Lambda Expressions
+
+Lambda expressions provide a compact, anonymous method implementation and enable lazy evaluation in Java.
+
+A lambda expression compiles into an instance of a functional interface (@FunctionalInterface).
+
+Supports closures, allowing access to variables from enclosing scopes.
+
+Example:
+
+BiFunction<Integer, Integer, Integer> add = (a, b) -> a + b;
+Works with Streams API, enabling operations like filtering and mapping:
+
+list.stream().filter(s -> s.startsWith("J")).forEach(System.out::println);
+Can be assigned to variables, passed as arguments, or used within higher-order functions.
+
+Uses invokedynamic bytecode instructions, optimizing execution performance.
+
+
+-Predefined Functional Interfaces
+
+Predefined functional interfaces allow higher-order programming and method references.
+
+Stream API and Collection API rely heavily on them.
+
+Chaining operations is possible using andThen() and compose() methods in Function<T, R>.
+
+Function<Integer, Integer> square = x -> x * x;
+Function<Integer, Integer> doubleIt = x -> x * 2;
+Function<Integer, Integer> combined = square.andThen(doubleIt);
+System.out.println(combined.apply(4)); // Output: 32
+Custom functional interfaces can be created using @FunctionalInterface annotation.
+
+Enable parallelism and concurrency optimizations in Java Streams and ForkJoin frameworks.
+
+-Method References
+
+Method references leverage functional interfaces for enhanced abstraction.
+
+Lazy evaluation is supported, improving performance in functional streams.
+
+Java uses type inference to determine method signatures automatically.
+
+Example of chaining method references in Streams:
+
+List<String> names = Arrays.asList("Alice", "Bob", "Charlie");
+names.stream().map(String::toUpperCase).forEach(System.out::println);
+They also work with custom classes and generic methods.
+
+Helps avoid verbose lambda expressions, leading to cleaner code and improved maintainability.
+
+4.5 Stream API
+
+-Introduction to Streams
+
+The Streams API in Java provides a functional pipeline for transforming data using monads.
+
+Supports stateless and stateful operations to optimize processing.
+
+Intermediate operations are lazy; they do not execute until a terminal operation is invoked.
+
+Uses short-circuiting for optimization in operations like limit() and findFirst().
+
+Example of a stream pipeline:
+
+List<String> names = List.of("Alice", "Bob", "Charlie");
+long count = names.stream()
+    .filter(name -> name.length() > 3)
+    .map(String::toUpperCase)
+    .count();
+Java Streams leverage functional programming, enhancing readability and parallel execution.
+
+Performance considerations: Parallel streams can have overhead in small datasets.
+
+-Stream Operations: Filtering, Mapping, Reducing
+
+Filtering, mapping, and reducing are essential functional programming patterns in Streams API.
+
+Lazy evaluation is used—filtering/mapping does not execute until .collect() or .reduce() is called.
+
+Short-circuiting optimizes performance, e.g., findFirst().
+
+Example of filtering and mapping in a pipeline:
+
+List<String> words = List.of("java", "stream", "parallel");
+words.stream()
+     .filter(word -> word.length() > 4)
+     .map(String::toUpperCase)
+     .forEach(System.out::println);
+Parallel execution is possible for large datasets but should be used wisely.
+
+-Parallel Streams
+
+Parallel streams leverage data parallelism for efficient computation.
+
+Uses work-stealing to balance task execution among CPU cores.
+
+Example with parallel sort:
+
+List<Integer> numbers = Arrays.asList(3, 1, 4, 5, 2);
+numbers.parallelStream().sorted().forEach(System.out::println);
+Performance considerations:
+
+Works best for large datasets (overhead is higher for small data).
+
+Avoid using parallel streams in synchronized code.
+
+Should not be used for I/O-bound operations due to thread blocking.
+
+-Primitive Streams
+
+Primitive streams in Java enable optimized numerical operations.
+
+Supports parallel processing and aggregation using summaryStatistics().
+
+Example of numeric computation:
+
+IntSummaryStatistics stats = IntStream.of(5, 10, 15, 20).summaryStatistics();
+System.out.println("Max: " + stats.getMax() + ", Average: " + stats.getAverage());
+Reduces performance overhead in mathematical and data processing applications.
+
+Ensures efficient memory allocation, especially in large-scale computations.

@@ -1,0 +1,51 @@
+/* Main container for the app */
+.app-container {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+/* Layout for pages that include Navbar and Sidebar */
+.main-layout {
+  display: flex;
+  flex-direction: row;
+  height: 100%;
+}
+
+/* Layout for StartPage, without Navbar and Sidebar */
+.start-layout {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
+/* Page content area */
+.page-content {
+  flex: 1;
+  padding: 20px;
+  overflow-y: auto;
+}
+
+/* Ensure Sidebar and Navbar have their correct dimensions */
+.Navbar, .Sidebar {
+  position: fixed;
+  height: 100%;
+  width: 250px;
+  top: 0;
+}
+
+.Navbar {
+  top: 0;
+  left: 0;
+}
+
+.Sidebar {
+  top: 0;
+  left: 250px;
+}
+
+/* Add some margin to the content on pages with Sidebar */
+.page-content {
+  margin-left: 250px; /* Adjust according to the Sidebar's width */
+}

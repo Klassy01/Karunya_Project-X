@@ -1,0 +1,1304 @@
+Basic
+
+Module 1: Introduction to Java Programming
+
+1.1 Overview of Java
+
+-History and Evolution of Java
+
+Java was developed by James Gosling at Sun Microsystems in 1995. It was designed to be platform-independent with its "Write Once, Run Anywhere" (WORA) feature. Java is an object-oriented, secure, and robust programming language. It initially started as Oak, a project for embedded systems but later evolved into a general-purpose language. Java gained popularity due to its simplicity, automatic memory management (Garbage Collection), and portability. Over the years, Java has seen multiple updates, improving its performance, security, and efficiency. Today, it is widely used in web, mobile, enterprise, and cloud applications.
+
+-Features and Benefits of Java
+
+Java is a popular programming language because of its simplicity, security, and platform independence. It follows the "Write Once, Run Anywhere" (WORA) principle, meaning Java programs can run on any device with a Java Virtual Machine (JVM). Java is object-oriented, making code reusable and easier to maintain. It has automatic memory management (Garbage Collection), which reduces memory leaks. Java supports multithreading, allowing efficient execution of multiple tasks at once. Its strong security features, such as Bytecode Verification, make it a safe choice for web and enterprise applications. Due to its scalability and reliability, Java is widely used in web, mobile, and enterprise development.
+
+-JVM, JRE, and JDK
+
+Java has three key components: JVM, JRE, and JDK.
+
+JVM (Java Virtual Machine): It runs Java programs by converting bytecode into machine code. It makes Java platform-independent.
+
+JRE (Java Runtime Environment): It includes the JVM and essential libraries needed to run Java applications.
+
+JDK (Java Development Kit): It contains the JRE, a compiler (javac), and development tools needed to write and compile Java programs.
+
+In short, JDK is for developers, JRE is for running programs, and JVM executes the bytecode.
+
+1.2 Setting Up the Development Environment
+
+-Installing the JDK
+
+To install the JDK (Java Development Kit), follow these steps:
+
+Download JDK from the official Oracle website or OpenJDK website.
+
+Choose the version compatible with your operating system (Windows, macOS, or Linux).
+
+Run the installer and follow the setup instructions.
+
+Set the JAVA_HOME environment variable (if required).
+
+Verify the installation by running:
+
+java -version
+javac -version
+
+Once installed, you can write and compile Java programs using javac and run them with java.
+
+-Setting Up an IDE
+
+To write Java programs efficiently, you need an IDE (Integrated Development Environment) like IntelliJ IDEA, Eclipse, or VS Code.
+
+Download & Install an IDE:
+
+IntelliJ IDEA (Recommended) – JetBrains
+
+Eclipse IDE – Eclipse
+
+VS Code – Visual Studio Code (with Java extensions)
+
+Open the IDE and install the Java Development Kit (JDK) if not already installed.
+
+Set up the JDK path in the IDE settings.
+
+Create a new Java project, write your first program, and run it!
+
+Use the built-in code editor, debugger, and compiler for efficient coding.
+
+-Writing and Running Your First Java Program
+
+To write and run your first Java program, follow these steps:
+
+Open an IDE (IntelliJ IDEA, Eclipse, or VS Code) or use a simple text editor.
+
+Create a new Java file named HelloWorld.java.
+
+Write the following Java code:
+
+public class HelloWorld {
+    public static void main(String[] args) {
+        System.out.println("Hello, World!");
+    }
+}
+Compile the program using javac HelloWorld.java.
+
+Run the program using java HelloWorld.
+
+If successful, it will print: Hello, World!. 
+
+1.3 Basic Syntax and Structure
+
+-Structure of a Java Program
+
+A Java program follows a specific structure. Here’s a simple example:
+
+// Package declaration (optional)
+package mypackage;
+
+// Class declaration
+public class HelloWorld {
+    // Main method - Entry point of the program
+    public static void main(String[] args) {
+        System.out.println("Hello, World!");
+    }
+}
+Package (Optional) groups related classes.
+
+Class contains the code.
+
+Main method (main) is where execution starts.
+
+Statements inside {} define program logic.
+
+-Java Keywords and Naming Conventions
+
+Java has reserved keywords that have special meanings and cannot be used as variable or method names. Examples include:
+public, static, class, int, void, return, if, else, while, for.
+
+Naming Conventions:
+
+Classes: Start with an uppercase letter (MyClass).
+
+Methods & Variables: Start with a lowercase letter (myMethod, myVariable).
+
+Constants: Use uppercase with underscores (MAX_VALUE).
+
+Packages: Use all lowercase (com.example).
+
+Following proper naming conventions improves readability and maintainability.
+
+-Comments and Documentation
+
+Java allows comments to explain code and improve readability. There are three types:
+
+Single-line comment (//): Used for short explanations.
+
+// This prints a message
+System.out.println("Hello, Java!");
+Multi-line comment (/* ... */): Used for longer descriptions.
+
+/* This is a 
+   multi-line comment */
+JavaDoc comment (/** ... */): Used for documentation generation.
+
+/**
+ * This method calculates the sum of two numbers.
+ */
+Comments do not affect execution but help in code maintenance.
+
+1.4 Data Types and Variables
+
+-Primitive Data Types
+
+In Java, primitive data types are built-in types that store simple values. There are eight primitive types:
+
+Integer types: byte (8-bit), short (16-bit), int (32-bit), long (64-bit)
+
+Floating-point types: float (32-bit), double (64-bit)
+
+Character type: char (16-bit Unicode)
+
+Boolean type: boolean (true/false)
+
+Example:
+
+int age = 25;
+double price = 99.99;
+boolean isJavaFun = true;
+Primitives do not store objects and are stored directly in memory.
+
+-Reference Data Types
+
+Reference data types store memory addresses instead of actual values. Common examples:
+
+Strings (String) → Sequence of characters.
+
+Arrays (int[] arr = {1,2,3};) → Collection of elements.
+
+Objects (User-defined classes).
+
+Wrapper Classes (Integer, Double, Boolean).
+
+Example:
+
+String name = "Java";
+int[] numbers = {1, 2, 3};
+Reference types store objects and require heap memory.
+
+-Variable Declaration and Initialization
+
+In Java, variables store data and must be declared and initialized before use.
+
+Declaration: Specifies type & name.
+
+int age; // Declaring a variable
+Initialization: Assigns a value.
+
+age = 25; // Assigning a value
+Declaration + Initialization (preferred):
+
+int age = 25;
+Multiple variables:
+
+int a = 5, b = 10;
+Variables must match their declared data type.
+
+-Type Casting and Conversion
+
+Type casting converts one data type into another. There are two types:
+
+Implicit Casting (Widening): Smaller → Larger type (Automatic).
+
+int num = 10;
+double d = num; // Implicit (int → double)
+Explicit Casting (Narrowing): Larger → Smaller type (Manual).
+
+double pi = 3.14;
+int roundedPi = (int) pi; // Explicit (double → int)
+Implicit conversion is safe, while explicit conversion may lose data.
+
+1.5 Operators and Expressions
+
+-Arithmetic, Relational, Logical, and Bitwise Operators
+
+Operators in Java perform operations on variables and values. The main types are:
+
+Arithmetic Operators (+, -, *, /, %) – Perform basic math.
+
+int sum = 5 + 3;  // 8
+Relational Operators (>, <, >=, <=, ==, !=) – Compare values.
+
+boolean result = (10 > 5); // true
+Logical Operators (&&, ||, !) – Used with boolean values.
+
+boolean check = (true && false); // false
+Bitwise Operators (&, |, ^, ~, <<, >>) – Operate on bits.
+
+-Operator Precedence and Associativity
+
+Basic Explanation (Clear & Precise - 7-8 lines)
+Operator precedence determines which operation is performed first in an expression. Higher precedence operators are executed before lower ones.
+
+Precedence Example (Multiplication * happens before Addition +):
+
+int result = 5 + 3 * 2; // 5 + (3 * 2) = 11
+Associativity decides order when operators have the same precedence.
+
+Left to Right: +, -, *, /
+
+Right to Left: =, ++, --
+
+Use parentheses () to control execution order.
+
+-Using Expressions in Programs
+
+Basic Explanation (Clear & Precise - 7-8 lines)
+Expressions are combinations of values, variables, and operators that produce a result.
+
+Example:
+
+int sum = 5 + 3; // Expression: 5 + 3
+Expressions are used in conditions and loops:
+
+if (sum > 5) {
+    System.out.println("Greater than 5");
+}
+Expressions help make programs dynamic.
+
+Module 2: Object-Oriented Programming (OOP) Concepts
+
+2.1 Introduction to OOP
+
+-Encapsulation
+
+Encapsulation is hiding data and restricting access to it using private variables and public methods. It helps protect data from accidental modification.
+
+Example:
+
+class Person {
+    private String name;  // Private variable
+
+    public void setName(String newName) {
+        name = newName;  // Public method to modify name
+    }
+}
+This ensures controlled access to variables, improving security and maintainability.
+
+-Inheritance
+
+Basic Explanation (Clear & Precise - 7-8 lines)
+Inheritance allows a child class to inherit properties and methods from a parent class using the extends keyword.
+
+Example:
+
+class Animal {
+    void makeSound() { System.out.println("Some sound"); }
+}
+
+class Dog extends Animal {
+    void bark() { System.out.println("Woof!"); }
+}
+Here, Dog inherits makeSound() from Animal, reducing code duplication.
+
+-Polymorphism
+
+Basic Explanation (Clear & Precise - 7-8 lines)
+Polymorphism allows one action to be performed in different ways. It has two types:
+
+Method Overloading: Multiple methods with the same name but different parameters.
+
+Method Overriding: A child class redefines a method from its parent class.
+
+Example:
+
+class MathUtil {
+    int add(int a, int b) { return a + b; }
+    double add(double a, double b) { return a + b; }
+}
+This enables flexibility and reusability in code.
+
+-Abstraction
+
+Basic Explanation (Clear & Precise - 7-8 lines)
+Abstraction hides implementation details and shows only the essential features. It is achieved using abstract classes and interfaces.
+
+Example (Abstract Class):
+
+abstract class Vehicle {
+    abstract void start();  // Abstract method (no body)
+}
+
+class Car extends Vehicle {
+    void start() { System.out.println("Car starts with a key"); }
+}
+Abstraction reduces complexity by focusing on what an object does, not how.
+
+2.2 Classes and Objects
+
+-Defining Classes and Creating Objects
+
+In Java, a class is a blueprint for creating objects. It defines attributes (variables) and behaviors (methods). Objects are instances of a class that store their own unique data while sharing the same structure and behavior.
+
+To create an object, the new keyword is used, which allocates memory and initializes the object. A class can have multiple objects, each holding different values for its instance variables. Objects interact with each other through method calls, enabling real-world modeling of entities in Java programs.
+
+-Instance Variables and Methods
+
+Instance variables are variables defined in a class that belong to individual objects. Each object gets its own copy, meaning changes in one object do not affect others.
+
+Instance methods operate on these variables and define the behavior of the objects. They can modify instance variables, retrieve values, and perform object-specific operations. These methods play a crucial role in ensuring data encapsulation by providing controlled access to instance variables, promoting security and maintainability.
+
+-Constructors and Constructor Overloading
+
+A constructor is a special method that initializes objects when they are created. It has the same name as the class and does not have a return type. Java provides a default constructor if none is defined, but developers can create custom constructors to assign values to instance variables at the time of object creation.
+
+Constructors ensure that objects are properly initialized before use, improving reliability. Once an object is created, the constructor is automatically called, eliminating the need for explicit initialization in most cases.
+
+-Implementing Interfaces
+
+An interface is a Java construct that defines a set of abstract methods without implementing them. It acts as a contract, ensuring that any class that implements the interface provides concrete implementations for all declared methods.
+
+Interfaces allow multiple classes to follow the same set of rules, promoting code reusability and flexibility. Unlike abstract classes, interfaces support multiple inheritance, making them a fundamental tool for loose coupling and modular application design.
+
+2.3 Advanced OOP Concepts
+
+-Abstract Classes vs Interfaces
+
+Abstract classes and interfaces both provide a way to achieve abstraction in Java. An abstract class is a class that cannot be instantiated and may contain both abstract (unimplemented) and concrete (implemented) methods.
+
+An interface, on the other hand, only contains abstract methods (before Java 8) and is meant to define a blueprint for classes. Abstract classes are useful when a base class needs common functionality, while interfaces allow multiple inheritance and are best for defining rules that multiple classes must follow.
+
+-Method Overloading and Overriding
+
+Method overloading and overriding allow methods to be used in different ways. Overloading occurs when multiple methods in the same class have the same name but different parameter lists (number, type, or order).
+
+Overriding occurs when a subclass provides a new implementation of a method already defined in its superclass. Overloading improves code readability, while overriding enables runtime polymorphism, allowing subclasses to provide specialized behavior.
+
+-The ‘instanceof’ Operator
+
+The instanceof operator checks if an object is an instance of a specific class or subclass. It returns a boolean value (true or false). This is useful for type checking before performing operations on an object.
+
+Example:
+
+if (obj instanceof String) {
+    System.out.println("obj is a String");
+}
+This prevents ClassCastException when casting objects and ensures safe operations.
+
+Module 3: Core Java APIs
+
+3.1 Strings and String Manipulation
+
+- String Methods and Operations
+
+Strings in Java are immutable, meaning their values cannot be changed once created. Java provides the String class with various methods for manipulation, such as .length(), .charAt(), .toUpperCase(), .toLowerCase(), .trim(), .substring(), and .replace().
+
+String comparison is done using .equals() for content comparison and == for reference comparison. The .split() method allows splitting a string into an array based on a delimiter. These methods are essential for handling text-based data efficiently in Java applications.
+
+- String Concatenation and Formatting
+
+String concatenation in Java is performed using the + operator or the .concat() method. However, using + creates new objects, leading to performance overhead.
+
+String formatting is done using String.format(), which allows inserting variables dynamically into a formatted string. The printf() method in Java supports similar functionality with format specifiers like %s, %d, and %f for structured output.
+
+- StringBuilder and StringBuffer
+
+Since String objects are immutable, Java provides StringBuilder and StringBuffer for efficient string manipulation. These classes allow modifications without creating new objects, improving performance.
+
+StringBuilder is not synchronized, making it faster but unsafe in multi-threaded environments. StringBuffer is thread-safe due to synchronization, ensuring consistency but with slower performance.
+
+3.2 Arrays and Collections
+
+- Single-Dimensional and Multi-Dimensional Arrays
+
+Arrays in Java are fixed-size data structures that store elements of the same type. A single-dimensional array represents a list of elements in contiguous memory locations, improving access speed.
+
+A multi-dimensional array (like a 2D array) represents a matrix-like structure, where each element has multiple indices. Java supports jagged arrays, where rows can have different lengths, enhancing memory efficiency.
+
+- Collections Framework Overview
+
+The Collections Framework in Java provides a unified architecture for handling and manipulating groups of objects efficiently. It includes interfaces like List, Set, and Map, along with concrete implementations such as ArrayList, HashSet, and HashMap.
+
+This framework allows dynamic data storage, unlike arrays, which have a fixed size. It supports key operations like sorting, searching, and iteration. The collections improve code reusability, performance, and scalability by providing optimized data structures.
+
+- List, Set, and Map Implementations
+
+Java provides List, Set, and Map implementations to handle collections efficiently:
+
+List (Ordered, allows duplicates) – ArrayList, LinkedList
+
+Set (Unique elements, unordered) – HashSet, TreeSet
+
+Map (Key-value pairs, fast lookups) – HashMap, TreeMap
+
+Lists maintain insertion order, while Sets discard duplicates. Maps optimize data retrieval by associating values with unique keys.
+
+- Iterators and Enhanced For-Loop
+
+Iterators provide a way to traverse collections element by element. The Iterator interface includes three main methods:
+
+.hasNext() – Checks if more elements exist
+
+.next() – Retrieves the next element
+
+.remove() – Deletes the current element
+
+The enhanced for-loop (for-each) simplifies iteration by automatically handling indexing and boundary checks. It is commonly used with arrays and collections.
+
+3.3 Exception Handling
+
+- Checked and Unchecked Exceptions
+
+Exceptions in Java are classified into Checked and Unchecked exceptions.
+
+Checked exceptions (e.g., IOException, SQLException) must be handled using try-catch or declared with throws, as they occur during compile-time.
+
+Unchecked exceptions (e.g., NullPointerException, ArrayIndexOutOfBoundsException) occur at runtime due to logic errors and do not require mandatory handling.
+
+Java’s exception handling mechanism ensures graceful failure and debugging, preventing abrupt termination of programs.
+
+- Try-Catch Blocks and Finally Clause
+
+A try-catch block in Java is used to handle exceptions and prevent program crashes.
+
+The try block contains code that might throw an exception.
+
+The catch block handles the exception and prevents termination.
+
+The finally block always executes, useful for cleanup (e.g., closing files).
+
+Example:
+
+try {
+    int result = 10 / 0;  // Causes ArithmeticException
+} catch (ArithmeticException e) {
+    System.out.println("Cannot divide by zero!");
+} finally {
+    System.out.println("Execution completed.");
+}
+
+- Creating Custom Exceptions
+
+Java allows developers to define custom exceptions by extending Exception (for checked exceptions) or RuntimeException (for unchecked exceptions).
+
+Example:
+
+class CustomException extends Exception {
+    public CustomException(String message) {
+        super(message);
+    }
+}
+Custom exceptions help in application-specific error handling, improving debugging clarity.
+
+3.4 Input and Output (I/O) Streams
+
+- Byte and Character Streams
+
+Java provides Byte Streams for handling binary data (images, audio, files) and Character Streams for text-based data.
+
+Byte Streams (InputStream, OutputStream) process raw bytes.
+
+Character Streams (Reader, Writer) process textual data with Unicode support.
+
+Character streams are preferred for internationalization, as they handle multiple languages efficiently.
+
+- Reading and Writing Files
+
+Java provides FileReader and FileWriter for handling text files and FileInputStream and FileOutputStream for handling binary files.
+
+FileReader and FileWriter work with character data, making them suitable for text files.
+
+FileInputStream and FileOutputStream handle raw byte data, useful for images and videos.
+
+Files.readAllLines() and Files.write() (from java.nio.file.Files) simplify file operations.
+
+Proper exception handling with IOException and using try-with-resources ensures efficient file handling and resource management.
+
+- Buffered Streams
+
+Buffered Streams in Java improve file reading and writing efficiency by reducing the number of disk access operations.
+
+BufferedReader and BufferedWriter process text files efficiently.
+
+BufferedInputStream and BufferedOutputStream work with binary files.
+
+They use an internal buffer to store chunks of data, reducing I/O operations.
+
+Using Buffered Streams is recommended when working with large files to enhance performance.
+
+- Serialization and Deserialization
+
+Serialization converts Java objects into a byte stream to store or transmit them. Deserialization reconstructs the object from this stream.
+
+ObjectOutputStream writes objects to a file.
+
+ObjectInputStream reads objects back into memory.
+
+Objects must implement Serializable to be eligible for serialization.
+
+Serialization is useful for saving application states, transferring objects over networks, and caching.
+
+3.5 Utility Classes
+
+- java.time (Date and Time API)
+
+The java.time package introduced in Java 8 provides a modern API for handling dates and times efficiently.
+
+LocalDate represents date without time.
+
+LocalTime represents time without date.
+
+LocalDateTime represents both date and time.
+
+ZonedDateTime handles time zones.
+
+This API is immutable and thread-safe, unlike the older java.util.Date. The DateTimeFormatter class formats and parses dates/times.
+
+- Math Class
+
+The Math class in Java provides mathematical functions like:
+
+Math.abs() for absolute value.
+
+Math.pow() for exponentiation.
+
+Math.sqrt() for square root.
+
+Math.max() and Math.min() for comparison.
+
+It also includes trigonometric functions (sin(), cos(), tan()) and constants (Math.PI, Math.E).
+
+- Formatting with DecimalFormat and NumberFormat
+
+DecimalFormat and NumberFormat are used to format numbers and currency in Java.
+
+DecimalFormat allows custom formatting patterns (#,###.00).
+
+NumberFormat provides locale-specific formatting for different countries.
+
+parse() method converts formatted strings back into numbers.
+
+Example:
+
+DecimalFormat df = new DecimalFormat("#,###.00");
+System.out.println(df.format(123456.789)); // Output: 123,456.79
+This is useful for financial applications and reports.
+
+Module 4: Advanced Java Concepts
+
+4.1 Generics
+
+-Generic Classes and Methods
+
+Generics allow type parameters to be specified in classes and methods, ensuring type safety at compile time.
+
+Instead of using Object, generics let us define parameterized types.
+
+A generic class is declared as class ClassName<T> {} where T is a placeholder for a type.
+
+This prevents type casting errors and improves code reusability.
+
+Example of a generic class:
+
+class Box<T> {  
+    private T value;  
+    public void setValue(T value) { this.value = value; }  
+    public T getValue() { return value; }  
+}
+This allows Box<Integer> or Box<String> without needing multiple class definitions.
+
+-Bounded Type Parameters
+
+Bounded type parameters restrict generic types to a specific hierarchy using extends.
+
+Example: <T extends Number> ensures T can only be a Number subclass.
+
+This allows using number-specific operations like doubleValue().
+
+Example:
+
+class Numeric<T extends Number> {  
+    private T num;  
+    public Numeric(T num) { this.num = num; }  
+    public double square() { return num.doubleValue() * num.doubleValue(); }  
+}
+This ensures only numeric types (Integer, Double, Float) are allowed.
+
+-Generics and the Collections Framework
+
+Generics are extensively used in the Collections Framework to enforce type safety.
+
+Before Java 5, collections stored Object, requiring explicit casting.
+
+With generics, collections specify element types, preventing runtime errors.
+
+Example:
+
+List<String> names = new ArrayList<>();  
+names.add("Java");  
+String name = names.get(0); // No casting needed  
+This prevents ClassCastException errors.
+
+4.2 Multithreading and Concurrency
+
+-Creating and Managing Threads
+
+Threads in Java allow parallel execution of tasks, improving performance in multi-core systems.
+
+Java provides two ways to create threads:
+
+Extending the Thread class
+
+Implementing the Runnable interface
+
+The start() method runs a thread asynchronously, while run() executes sequentially.
+
+Thread lifecycle: New → Runnable → Running → Terminated.
+
+sleep(), join(), and yield() control thread execution timing.
+
+-Synchronization and Thread Safety
+
+Synchronization ensures that multiple threads do not access shared resources simultaneously, preventing data inconsistency.
+
+synchronized keyword locks an object to allow only one thread at a time.
+
+Methods (synchronized void method()) or blocks (synchronized(this) {}) can be synchronized.
+
+Deadlocks occur when two threads wait indefinitely for each other’s lock.
+
+Thread safety means ensuring correct execution of concurrent code without conflicts.
+
+-Concurrency Utilities
+
+Java provides a concurrency framework in java.util.concurrent for efficient multithreading.
+
+ExecutorService manages thread pools to improve performance.
+
+ScheduledExecutorService schedules tasks at fixed intervals.
+
+CountDownLatch ensures multiple threads wait for a task to complete.
+
+CyclicBarrier synchronizes threads by forcing them to wait at a common point.
+
+4.3 Networking
+
+-Java Networking APIs
+
+Java provides the java.net package for network programming, enabling communication over TCP/IP.
+
+URL and URLConnection allow interaction with web resources.
+
+Sockets facilitate direct client-server communication over the internet.
+
+InetAddress retrieves IP addresses and hostnames.
+
+Java supports TCP (reliable communication) and UDP (faster but unreliable) protocols.
+
+HttpURLConnection is used for HTTP requests (GET, POST).
+
+Networking APIs enable remote data transfer, file sharing, and messaging applications
+
+-Working with URLs and Sockets
+
+Java handles network connections using URLs and sockets.
+
+URL (new URL("https://example.com")) represents web addresses.
+
+openConnection() reads data from websites.
+
+Sockets (Socket) create direct communication channels between two machines.
+
+ServerSocket waits for client connections.
+
+DatagramSockets send data without requiring a persistent connection.
+
+Java automatically manages IP resolution and data transmission.
+
+-Building Client-Server Applications
+
+A client-server model allows two applications to communicate over a network.
+
+The server listens for incoming connections using ServerSocket(port).
+
+The client connects using Socket(host, port).
+
+DataInputStream and DataOutputStream manage message exchange.
+
+A multithreaded server can handle multiple clients simultaneously.
+
+ObjectOutputStream and ObjectInputStream allow object-based communication.
+
+Proper exception handling ensures graceful disconnections.
+
+4.4 Lambda Expressions and Functional Interfaces
+
+-Syntax and Usage of Lambda Expressions
+
+Lambda expressions in Java provide a concise way to express anonymous functions.
+
+They enable functional programming and are mainly used with functional interfaces.
+
+Syntax: (parameters) -> { expression/body }.
+
+Example: (a, b) -> a + b; represents an addition operation.
+
+Used in streams, collections, and event handling.
+
+Reduces boilerplate code in anonymous classes.
+
+Supports single-line or multi-line implementations.
+
+-Predefined Functional Interfaces
+
+Java provides predefined functional interfaces in the java.util.function package.
+
+A functional interface has exactly one abstract method (can have default/static methods).
+
+Common ones include:
+
+Predicate<T> → Boolean condition check (test(T t)).
+
+Consumer<T> → Performs an operation (accept(T t)).
+
+Function<T, R> → Transforms input (apply(T t)).
+
+Supplier<T> → Supplies a value (get()).
+
+Used with lambda expressions to improve readability.
+
+-Method References
+
+Method references provide a shorter syntax for lambda expressions when methods already exist.
+
+Represented using :: (double colon operator).
+
+Used when a lambda calls an existing method without modifications.
+
+Example:
+
+Consumer<String> print = System.out::println;
+Types:
+
+Static method reference → Class::staticMethod
+
+Instance method reference → object::instanceMethod
+
+Constructor reference → Class::new
+
+4.5 Stream API
+
+-Introduction to Streams
+
+The Java Streams API (introduced in Java 8) provides a functional approach to processing data collections.
+
+Allows operations like filtering, mapping, and reducing on elements.
+
+Uses a pipeline-based execution model with methods like stream(), filter(), map(), and reduce().
+
+Supports lazy evaluation, meaning operations execute only when needed.
+
+Helps in writing cleaner, concise, and parallelizable code.
+
+Works with Collections, Arrays, and I/O sources.
+
+Streams are immutable and do not modify the original data source.
+
+-Stream Operations: Filtering, Mapping, Reducing
+
+Stream operations help in processing and transforming data efficiently.
+
+Filtering: Removes unwanted elements using filter(Predicate).
+
+Mapping: Converts elements into different forms using map(Function).
+
+Reducing: Aggregates elements into a single result using reduce().
+
+Example:
+
+List<Integer> numbers = List.of(1, 2, 3, 4);
+int sum = numbers.stream().reduce(0, Integer::sum); 
+These operations enable cleaner, more readable code than traditional loops.
+
+-Parallel Streams
+
+Parallel streams enable multi-threaded execution for processing large collections faster.
+
+Uses Fork/Join framework for concurrent execution.
+
+Can be created using .parallelStream() or .stream().parallel().
+
+Improves performance on multi-core processors.
+
+Example:
+
+List<Integer> numbers = List.of(1, 2, 3, 4);
+int sum = numbers.parallelStream().reduce(0, Integer::sum);
+Not always faster due to thread management overhead.
+
+-Primitive Streams
+
+Primitive streams (IntStream, DoubleStream, LongStream) are specialized streams for primitives.
+
+Avoids boxing/unboxing overhead seen in Stream<Integer>.
+
+Created using IntStream.of(), range(), or generate().
+
+Example:
+
+IntStream.range(1, 5).forEach(System.out::println);
+Useful for numeric computations and performance-critical applications.
+
+Module 5: Graphical User Interface (GUI) Development
+
+5.1 Introduction to GUI Programming
+
+-Overview of AWT, Swing, and JavaFX
+
+Java provides three GUI frameworks: AWT, Swing, and JavaFX.
+
+AWT (Abstract Window Toolkit): Oldest framework, built on native OS components.
+
+Swing: More advanced than AWT, provides lightweight components.
+
+JavaFX: Modern framework, supports rich UI, 2D/3D graphics, CSS styling.
+
+Swing and JavaFX are more flexible and platform-independent.
+
+Event-driven model allows handling user interactions dynamically.
+
+JavaFX is now the preferred framework for modern GUI development.
+
+-Event-Driven Programming
+
+Java GUI frameworks follow an event-driven programming model.
+
+Events: User interactions like mouse clicks, key presses, and window actions.
+
+Event Listeners: Interfaces that handle specific events (ActionListener, MouseListener).
+
+Event Source: The component that generates an event (e.g., a button).
+
+Event Handling: Uses callback methods to respond to user input.
+
+Swing uses the Event Dispatch Thread (EDT) for handling events asynchronously.
+
+5.2 Building User Interfaces with Swing
+
+-Creating Windows with JFrame
+
+JFrame is the main container for Swing applications.
+
+Extends java.awt.Frame, provides a window with a title bar.
+
+Components (JButton, JLabel, etc.) are added to content pane.
+
+setSize() defines dimensions; setVisible(true) makes it appear.
+
+Default close operation is EXIT_ON_CLOSE to terminate the program.
+
+-Adding Components (Buttons, TextFields, Labels)
+
+Swing provides UI components:
+
+JButton (Clickable button for user interaction).
+
+JTextField (Input field for text).
+
+JLabel (Displays static text).
+
+Components are added to JFrame’s content pane.
+
+-Layout Managers
+
+Swing uses Layout Managers to control component arrangement.
+
+FlowLayout: Left to right, wraps content.
+
+BorderLayout: Divides UI into NORTH, SOUTH, EAST, WEST, CENTER.
+
+GridLayout: Arranges components in equal-sized grid cells.
+
+-Event Handling and Listeners
+
+Swing events are handled using event listeners:
+
+ActionListener: Handles button clicks.
+
+MouseListener: Captures mouse events.
+
+KeyListener: Detects keyboard input.
+
+5.3 Advanced Swing Components
+
+-Menus and Toolbars
+
+Swing provides menus and toolbars for organizing actions in a structured way.
+
+JMenuBar: Holds multiple menus (JMenu).
+
+JMenu: Represents a drop-down menu containing menu items.
+
+JMenuItem: Represents individual actions inside a menu.
+
+JToolBar: Holds quick-access buttons and controls.
+
+Supports keyboard shortcuts via setMnemonic().
+
+Menus and toolbars improve application usability and accessibility.
+
+-Dialogs and Pop-ups
+
+Swing provides dialog boxes and pop-ups to interact with users.
+
+JOptionPane: Standard pop-ups for alerts, confirmations, and input prompts.
+
+JDialog: Customizable modal windows for form inputs or settings dialogs.
+
+Types of Dialogs: showMessageDialog(), showConfirmDialog(), showInputDialog().
+
+Pop-ups help provide feedback, warnings, or user interactions.
+
+-Tables and Trees
+
+Swing provides JTable and JTree for displaying structured data.
+
+JTable: Displays tabular data with rows and columns.
+
+JTree: Displays hierarchical structures (like file directories).
+
+Editable Cells: JTable allows cell modifications.
+
+Sorting and Filtering: RowSorter enables dynamic sorting.
+
+Tree Expansion: JTree nodes can be expanded or collapsed.
+
+5.4 JavaFX Overview
+
+-Setting Up JavaFX
+
+JavaFX is a modern UI framework for building rich desktop applications.
+
+JavaFX requires JDK 11+ or an external JavaFX SDK (for JDK 8).
+
+Modules Required: javafx.controls, javafx.fxml, javafx.graphics.
+
+Installation Steps:
+
+Download JavaFX SDK.
+
+Add JavaFX libraries to the classpath.
+
+Use --module-path and --add-modules flags to run JavaFX programs.
+
+FXML Support: Separates UI design from logic for cleaner architecture.
+
+-Building UI with FXML
+
+FXML is an XML-based markup language for JavaFX UI design.
+
+Separates UI from logic: UI is in .fxml files, logic in Java controllers.
+
+FXML Elements: Define UI components (<Button>, <VBox>, <Label>).
+
+Controller Class: Handles events (@FXML private Button myButton).
+
+FXMLLoader: Loads .fxml files dynamically:
+
+FXMLLoader.load(getClass().getResource("sample.fxml"));
+Improves code maintainability and supports scalable UI design.
+
+-Styling with CSS
+
+JavaFX supports CSS-based styling, enhancing UI customization.
+
+CSS Selectors: JavaFX uses -fx- properties (-fx-background-color, -fx-font-size).
+
+External Stylesheets: Linked using scene.getStylesheets().add("style.css").
+
+Inline Styling: Applied via setStyle("-fx-background-color: red;").
+
+ID and Class Selectors:
+
+css
+#myButton { -fx-background-color: blue; }
+.rounded { -fx-border-radius: 10px; }
+Consistent Theming: Enables easy UI customization and maintenance.
+
+-Animations and Effects
+
+JavaFX supports built-in animations using the javafx.animation package.
+
+Types of Animations:
+
+TranslateTransition (movement)
+
+FadeTransition (opacity changes)
+
+ScaleTransition (size changes)
+
+RotateTransition (rotation effects)
+
+Timeline Animations: Enable frame-based animations using KeyFrame.
+
+Module 6: Database Connectivity and Final Project
+
+6.1 Introduction to Databases
+
+-SQL and Relational Databases
+
+SQL (Structured Query Language) is used to manage and manipulate relational databases.
+
+Relational Databases store data in tables with rows and columns.
+
+Each table has a primary key to uniquely identify records.
+
+SQL Commands:
+
+DDL (Data Definition Language) – CREATE, ALTER, DROP.
+
+DML (Data Manipulation Language) – INSERT, UPDATE, DELETE, SELECT.
+
+Normalization avoids data redundancy and improves efficiency.
+
+SQL enables data retrieval, modification, and security with queries.
+
+-Database Design and Normalization
+
+Database design ensures efficient data organization in a relational database.
+
+Entities & Attributes: Entities represent objects (e.g., Student), attributes define properties (name, age).
+
+Relationships: One-to-One, One-to-Many, Many-to-Many.
+
+Normalization: A process that removes redundancy and improves efficiency.
+
+1NF: Eliminates duplicate columns.
+
+2NF: Removes partial dependencies.
+
+3NF: Eliminates transitive dependencies.
+
+ER Diagrams: Graphical representation of entities and their relationships.
+
+6.2 Java Database Connectivity (JDBC)
+
+-JDBC Drivers and Architecture
+
+JDBC (Java Database Connectivity) is an API for connecting Java applications to databases.
+
+JDBC uses drivers to communicate with relational databases.
+
+Types of JDBC Drivers:
+
+Type 1: JDBC-ODBC Bridge (Deprecated).
+
+Type 2: Native-API Driver.
+
+Type 3: Network Protocol Driver.
+
+Type 4: Thin Driver (Most commonly used).
+
+JDBC API Components:
+
+DriverManager: Manages database connections.
+
+Connection: Establishes a session with the database.
+
+Statement & PreparedStatement: Execute queries.
+
+-Connecting to a Database
+
+Connecting a Java application to a database is done using JDBC (Java Database Connectivity).
+
+Load the JDBC Driver: Class.forName("com.mysql.cj.jdbc.Driver");
+
+Establish a Connection using DriverManager.getConnection():
+
+java
+
+Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/db", "user", "password");
+Execute Queries using Statement or PreparedStatement.
+
+Close the Connection to prevent memory leaks: conn.close();.
+
+JDBC allows interaction with databases securely and efficiently.
+
+
+-Executing Queries and Managing Transactions
+
+JDBC provides methods to execute queries and manage transactions in a database.
+
+Executing Queries:
+
+executeQuery() for retrieving data (SELECT).
+
+executeUpdate() for modifying data (INSERT, UPDATE, DELETE).
+
+Transactions ensure atomicity and consistency:
+
+conn.setAutoCommit(false); begins a transaction.
+
+conn.commit(); saves all changes.
+
+conn.rollback(); reverts changes if an error occurs.
+
+6.3 Object-Relational Mapping (ORM) with Hibernate
+
+-Introduction to Hibernate
+
+Hibernate is a Java-based ORM (Object-Relational Mapping) framework that simplifies database operations.
+
+It allows developers to map Java objects to database tables without writing complex SQL queries.
+
+Hibernate eliminates boilerplate JDBC code by handling connections, queries, and transactions.
+
+It supports multiple database engines like MySQL, PostgreSQL, and Oracle.
+
+Key Features: Automatic table creation, caching, and lazy loading.
+
+The configuration is done via XML (hibernate.cfg.xml) or Java annotations (@Entity).
+
+-Mapping Java Objects to Database Tables
+
+Hibernate uses annotations or XML configurations to map Java objects to database tables.
+
+A class is marked as an entity using @Entity, and a table is defined with @Table(name="table_name").
+
+Each field is mapped to a column using @Column(name="column_name").
+
+Primary keys are defined with @Id, and auto-generation is enabled using @GeneratedValue.
+
+Example:
+
+java
+
+@Entity
+@Table(name = "students")
+public class Student {
+    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int id;
+    private String name;
+}
+This structure allows Hibernate to automatically generate database tables.
+
+-CRUD Operations with Hibernate
+
+CRUD (Create, Read, Update, Delete) operations in Hibernate are performed using Session and Transaction APIs.
+
+Create (Insert Data):
+
+java
+
+session.save(entity);
+Read (Retrieve Data):
+
+java
+
+session.get(Entity.class, id);
+Update (Modify Data):
+
+java
+
+session.update(entity);
+Delete (Remove Data):
+
+java
+
+session.delete(entity);
+Transactions must be committed (session.getTransaction().commit()) to save changes.
+
+6.4 Building a Complete Java Application
+
+-Designing Database Schema
+
+Designing a database schema involves structuring tables, relationships, and constraints to efficiently store and manage data.
+
+Identify entities (e.g., User, Product, Order) and define attributes (columns).
+
+Establish primary keys (id as PRIMARY KEY) and foreign keys (user_id in Orders table).
+
+Normalize data using 1NF, 2NF, and 3NF to eliminate redundancy.
+
+Use appropriate data types (e.g., VARCHAR, INTEGER, BOOLEAN).
+
+Define indexes on frequently queried columns for faster searches.
+
+Store relationships using one-to-one, one-to-many, and many-to-many mappings.
+
+
+
+-Developing GUI and Business Logic
+
+A Java application has two key components: GUI (Graphical User Interface) and Business Logic.
+
+GUI is built using Swing, JavaFX, or AWT to handle user interactions.
+
+Business logic manages data processing, validation, and rule enforcement.
+
+Use MVC (Model-View-Controller) to separate UI from logic.
+
+Event-driven programming ensures UI elements respond to user actions.
+
+Forms include buttons, text fields, and dropdowns to collect data.
+
+
+
+-Integrating Database with Application
+
+Database integration allows a Java application to store and retrieve data dynamically.
+
+Use JDBC (Java Database Connectivity) to connect with MySQL, PostgreSQL, or SQLite.
+
+Establish a connection using DriverManager.getConnection(url, user, password).
+
+Execute queries using Prepared Statements (stmt.executeQuery("SELECT * FROM users")).
+
+Close the connection after queries to free up resources.
+
+Use connection pooling (HikariCP) for efficient database management.
+
+6.5 Final Project
+
+-Project Planning and Implementation
+
+Project planning involves defining goals, scope, timeline, and resources before development begins.
+
+Identify requirements and create a roadmap with milestones.
+
+Choose technologies (Java, Spring Boot, MySQL, React) based on project needs.
+
+Use Agile methodology with sprints and iterations for flexibility.
+
+Design high-level architecture (frontend, backend, database).
+
+Create prototypes and proof of concepts (PoCs) to test feasibility.
+
+Implementation follows coding, integration, and deployment phases.
+
+-Testing and Debugging
+
+Testing ensures that the software is bug-free, efficient, and meets user expectations.
+
+Unit Testing (JUnit, TestNG) verifies individual components.
+
+Integration Testing ensures modules work together correctly.
+
+Manual Testing checks UI and functionality.
+
+Debugging Tools (Eclipse, IntelliJ Debugger) help identify and fix errors.
+
+Logging (Log4j, SLF4J) tracks errors and system behavior.
+
+-Future Enhancements
+
+Future enhancements help improve software performance, features, and user experience.
+
+Upgrade to new frameworks (e.g., Spring Boot updates).
+
+Improve scalability using microservices.
+
+Implement AI-based features for automation.
+
+Enhance security with multi-factor authentication (MFA).
+
+Optimize database performance with sharding and caching.

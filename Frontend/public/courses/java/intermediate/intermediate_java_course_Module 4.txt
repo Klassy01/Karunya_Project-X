@@ -1,0 +1,270 @@
+Module 4: Advanced Java Concepts
+
+4.1 Generics
+
+-Generic Classes and Methods
+
+Generics in Java are implemented using type erasure, meaning type parameters exist only at compile time.
+
+Methods can also be generic, defined as <T> returnType methodName(T param).
+
+Wildcards (?) allow flexibility in defining unknown types.
+
+Bounded types can restrict generic parameters to subclasses of a specific type (T extends Number).
+
+Example of a generic method:
+
+public static <T> void printArray(T[] arr) {  
+    for (T item : arr) System.out.println(item);  
+}
+Generics prevent ClassCastException and make collections type-safe.
+
+-Bounded Type Parameters
+
+Bounded type parameters enable generic constraints, ensuring compile-time safety.
+
+T extends Comparable<T> allows generic objects to be sorted.
+
+Multiple bounds can be specified using &, e.g., <T extends Number & Comparable<T>>.
+
+Example:
+
+public static <T extends Comparable<T>> T getMax(T a, T b) {  
+    return (a.compareTo(b) > 0) ? a : b;  
+}
+This method works with any comparable type (Integer, String, etc.).
+
+-Generics and the Collections Framework
+
+Generics make collections more efficient by allowing type-safe operations.
+
+List<T>, Set<T>, and Map<K, V> enforce compile-time safety.
+
+Wildcards (? extends, ? super) allow flexible type assignments.
+
+Example:
+
+public static void printList(List<? extends Number> list) {  
+    for (Number n : list) System.out.println(n);  
+}
+This allows List<Integer> and List<Double> as valid inputs.
+
+4.2 Multithreading and Concurrency
+
+-Creating and Managing Threads
+
+Java supports multithreading, allowing multiple tasks to execute simultaneously.
+
+Extending Thread provides a separate execution path, while implementing Runnable promotes better design by supporting multiple inheritance.
+
+Thread.sleep(ms): Pauses execution for a specified time.
+
+join(): Ensures a thread completes before others continue.
+
+setPriority(): Assigns execution importance but does not guarantee order.
+
+isAlive(): Checks if a thread is running.
+
+Threads communicate using shared resources, requiring synchronization to prevent conflicts.
+
+-Synchronization and Thread Safety
+
+Synchronization prevents race conditions, where multiple threads modify shared data unpredictably.
+
+Intrinsic Locks: Each Java object has a built-in lock that synchronized methods acquire.
+
+wait(), notify(), and notifyAll() facilitate thread communication inside synchronized blocks.
+
+Reentrant Lock (ReentrantLock): More flexible alternative to synchronized.
+
+Performance overhead: Excessive locking reduces efficiency, leading to thread contention.
+
+volatile prevents caching issues, ensuring real-time value updates across threads.
+
+-Concurrency Utilities
+
+Concurrency utilities optimize thread performance and resource management.
+
+Thread Pooling (FixedThreadPool, CachedThreadPool) reduces thread creation overhead.
+
+Future and Callable return results from concurrent tasks, unlike Runnable.
+
+BlockingQueue handles producer-consumer patterns, ensuring safe multithreaded communication.
+
+Semaphore controls the number of concurrent thread accesses to a resource.
+
+Phaser provides flexible thread synchronization, improving upon CountDownLatch.
+
+4.3 Networking
+
+-Java Networking APIs
+
+Java's networking API allows applications to send and receive data over networks efficiently.
+
+Sockets (Socket, ServerSocket) establish connections for two-way communication.
+
+UDP communication (DatagramSocket, DatagramPacket) is connectionless, useful for fast data exchange.
+
+URLConnection enables reading/writing data over HTTP, FTP, and file-based URLs.
+
+InetAddress.getByName() resolves domain names to IP addresses.
+
+Java supports multithreaded networking, handling multiple clients simultaneously.
+
+Proper error handling is necessary to manage timeouts and failed connections.
+
+-Working with URLs and Sockets
+
+URL.openStream() reads web content as an input stream.
+
+Sockets (Socket, ServerSocket) are used in client-server models for real-time communication.
+
+getInputStream() and getOutputStream() manage data exchange in a socket connection.
+
+Multithreading enables handling multiple clients in a server.
+
+UDP (DatagramSocket) is faster than TCP but lacks reliability.
+
+Network timeouts can be set using setSoTimeout(ms).
+
+-Building Client-Server Applications
+
+A server socket (ServerSocket) continuously listens for connections.
+
+TCP/IP ensures reliable communication, while UDP is faster but lacks built-in reliability.
+
+Thread pools (ExecutorService) improve efficiency by managing multiple client connections.
+
+Serialization (Serializable) allows transferring complex objects over the network.
+
+Clients and servers must handle timeouts, connection failures, and disconnections gracefully.
+
+Using BufferedReader and PrintWriter improves I/O efficiency for text-based communication.
+
+4.4 Lambda Expressions and Functional Interfaces
+
+-Syntax and Usage of Lambda Expressions
+
+Lambda expressions in Java were introduced in Java 8 to enable functional-style programming.
+
+They eliminate the need for anonymous inner classes when implementing interfaces with a single method.
+
+Syntax:
+
+(parameters) -> expression
+(parameters) -> { multiple statements }
+Used with functional interfaces (java.util.function), such as Predicate, Consumer, and Function.
+
+Supports type inference, meaning parameter types can often be omitted.
+
+Enables method chaining and simplifies operations on collections using Streams API.
+
+Encourages declarative programming, improving readability.
+
+-Predefined Functional Interfaces
+
+Functional interfaces enable Java's functional programming paradigm.
+
+Java 8 introduced many predefined functional interfaces in java.util.function.
+
+Common functional interfaces:
+
+UnaryOperator<T> – Transforms input of the same type.
+
+BiFunction<T, U, R> – Takes two inputs, returns one output.
+
+BiConsumer<T, U> – Takes two inputs, performs an action.
+
+Example using Predicate:
+
+Predicate<Integer> isEven = n -> n % 2 == 0;
+System.out.println(isEven.test(10)); // true
+Used extensively in Stream operations and event-driven programming.
+
+-Method References
+
+Method references are syntactic shortcuts for lambda expressions calling existing methods.
+
+Improve readability and performance by avoiding redundant lambda syntax.
+
+Example comparison:
+
+// Using lambda
+Function<String, Integer> lengthLambda = s -> s.length();
+
+// Using method reference
+Function<String, Integer> lengthMethodRef = String::length;
+Common use cases:
+
+Static method reference → Math::abs instead of (x) -> Math.abs(x).
+
+Instance method reference → str::toUpperCase.
+
+Constructor reference → ArrayList::new.
+
+4.5 Stream API
+
+-Introduction to Streams
+
+Java Streams API provides a declarative and efficient way to process collections.
+
+Works with functional-style programming using map(), filter(), and reduce().
+
+Uses internal iteration, unlike traditional loops.
+
+Stream operations are of two types:
+
+Intermediate (lazy execution) – filter(), map(), sorted().
+
+Terminal (triggers execution) – collect(), count(), forEach().
+
+Supports sequential and parallel execution using .parallelStream().
+
+Improves performance using multi-core processing without explicit threading.
+
+Encourages immutable transformations, reducing side effects.
+
+-Stream Operations: Filtering, Mapping, Reducing
+
+Stream operations use functional programming to transform data efficiently.
+
+filter(): Selects elements based on a condition.
+
+map(): Applies a function to each element, transforming it.
+
+reduce(): Combines elements into a single result.
+
+Example:
+
+List<String> names = List.of("Alice", "Bob", "Charlie");
+String concatenated = names.stream().reduce("", (a, b) -> a + " " + b);
+These operations improve code readability and performance, especially in large datasets.
+
+-Parallel Streams
+
+Parallel streams allow automatic parallelism using multiple threads.
+
+Parallel execution divides data into smaller chunks.
+
+Uses Spliterator and ForkJoinPool for managing tasks.
+
+Example:
+
+List<String> words = List.of("one", "two", "three");
+words.parallelStream().forEach(System.out::println);
+Race conditions can occur if mutable data structures are used.
+
+Best for CPU-intensive tasks like numerical computation.
+
+-Primitive Streams
+
+Primitive streams improve performance by avoiding object creation.
+
+Types: IntStream, DoubleStream, LongStream.
+
+Provides specialized methods like sum(), average(), max(), and min().
+
+Example:
+
+double avg = DoubleStream.of(10.5, 20.8, 30.1).average().orElse(0.0);
+Reduces memory consumption by working directly with primitive values.

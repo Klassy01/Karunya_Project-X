@@ -1,0 +1,155 @@
+/* Ensure styles are scoped to only .quiz-container */
+.quiz-container {
+    max-width: 700px;
+    background: #ffffff;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    transition: all 0.3s ease-in-out;
+    
+    /* Center the container */
+    margin: 0 auto; /* Horizontally centers the container */
+    display: flex;
+    flex-direction: column; /* Align the content vertically */
+    align-items: center; /* Center items inside the container */
+  }
+  
+  /* Hover effect */
+  .quiz-container:hover {
+    box-shadow: 0px 8px 25px rgba(0, 0, 0, 0.2);
+  }
+  
+  /* Heading Styling */
+  .quiz-container h2 {
+    color: #2c3e50;
+    font-size: 24px;
+    font-weight: 600;
+    margin-bottom: 20px;
+  }
+  
+  /* Loading text Styling */
+  .quiz-container .loading-text {
+    font-size: 18px;
+    font-weight: 500;
+    color: #3498db;
+  }
+  
+  /* Question Card Styling */
+  .quiz-container .question-card {
+    background: #f8f9fa;
+    padding: 20px;
+    margin: 15px 0;
+    border-radius: 10px;
+    border: 1px solid #e1e4e8;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.05);
+    text-align: left;
+    transition: transform 0.2s ease-in-out;
+  }
+  
+  /* Hover effect on Question Card */
+  .quiz-container .question-card:hover {
+    transform: scale(1.02);
+  }
+  
+  /* Option label Styling */
+  .quiz-container .option-label {
+    display: block;
+    font-size: 16px;
+    font-weight: 500;
+    color: #2c3e50;
+    background: #ffffff;
+    padding: 10px;
+    margin: 8px 0;
+    border-radius: 8px;
+    border: 1px solid #d1d9e6;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+  }
+  
+  /* Hover effect on Option label */
+  .quiz-container .option-label:hover {
+    background-color: #f4f6f9;
+    border-color: #3498db;
+  }
+  
+  /* Radio button styling */
+  .quiz-container input[type="radio"] {
+    margin-right: 10px;
+    transform: scale(1.2);
+    accent-color: #3498db;
+  }
+  
+  /* Submit button Styling */
+  .quiz-container .submit-button {
+    background: #2ecc71;
+    color: white;
+    font-size: 18px;
+    font-weight: 600;
+    padding: 12px 24px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    margin-top: 20px;
+    transition: background 0.3s ease-in-out, transform 0.2s;
+  }
+  
+  /* Hover effect on Submit button */
+  .quiz-container .submit-button:hover {
+    background: #27ae60;
+    transform: scale(1.05);
+  }
+  
+  /* Score section Styling */
+  .quiz-container .score-section {
+    margin-top: 25px;
+    font-size: 20px;
+    font-weight: 600;
+    color: #2c3e50;
+  }
+  
+  /* Category Styling */
+  .quiz-container .category {
+    font-size: 18px;
+    font-weight: bold;
+    padding: 8px 12px;
+    border-radius: 6px;
+    display: inline-block;
+    margin-top: 10px;
+  }
+  
+  /* Beginner Category Styling */
+  .quiz-container .category.beginner {
+    background: #e74c3c;
+    color: white;
+  }
+  
+  /* Intermediate Category Styling */
+  .quiz-container .category.intermediate {
+    background: #f39c12;
+    color: white;
+  }
+  
+  /* Advanced Category Styling */
+  .quiz-container .category.advanced {
+    background: #2ecc71;
+    color: white;
+  }
+  
+  /* Mobile-responsive styling */
+  @media (max-width: 768px) {
+    .quiz-container {
+      width: 90%;
+      padding: 20px;
+    }
+  
+    .quiz-container .question-card {
+      padding: 15px;
+    }
+  
+    .quiz-container .submit-button {
+      width: 100%;
+      padding: 14px;
+    }
+  }
+  

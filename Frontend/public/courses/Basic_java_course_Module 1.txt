@@ -1,0 +1,264 @@
+Module 1: Introduction to Java Programming
+
+1.1 Overview of Java
+
+-History and Evolution of Java
+
+Java was developed by James Gosling at Sun Microsystems in 1995. It was designed to be platform-independent with its "Write Once, Run Anywhere" (WORA) feature. Java is an object-oriented, secure, and robust programming language. It initially started as Oak, a project for embedded systems but later evolved into a general-purpose language. Java gained popularity due to its simplicity, automatic memory management (Garbage Collection), and portability. Over the years, Java has seen multiple updates, improving its performance, security, and efficiency. Today, it is widely used in web, mobile, enterprise, and cloud applications.
+
+-Features and Benefits of Java
+
+Java is a popular programming language because of its simplicity, security, and platform independence. It follows the "Write Once, Run Anywhere" (WORA) principle, meaning Java programs can run on any device with a Java Virtual Machine (JVM). Java is object-oriented, making code reusable and easier to maintain. It has automatic memory management (Garbage Collection), which reduces memory leaks. Java supports multithreading, allowing efficient execution of multiple tasks at once. Its strong security features, such as Bytecode Verification, make it a safe choice for web and enterprise applications. Due to its scalability and reliability, Java is widely used in web, mobile, and enterprise development.
+
+-JVM, JRE, and JDK
+
+Java has three key components: JVM, JRE, and JDK.
+
+JVM (Java Virtual Machine): It runs Java programs by converting bytecode into machine code. It makes Java platform-independent.
+
+JRE (Java Runtime Environment): It includes the JVM and essential libraries needed to run Java applications.
+
+JDK (Java Development Kit): It contains the JRE, a compiler (javac), and development tools needed to write and compile Java programs.
+
+In short, JDK is for developers, JRE is for running programs, and JVM executes the bytecode.
+
+1.2 Setting Up the Development Environment
+
+-Installing the JDK
+
+To install the JDK (Java Development Kit), follow these steps:
+
+Download JDK from the official Oracle website or OpenJDK website.
+
+Choose the version compatible with your operating system (Windows, macOS, or Linux).
+
+Run the installer and follow the setup instructions.
+
+Set the JAVA_HOME environment variable (if required).
+
+Verify the installation by running:
+
+java -version
+javac -version
+
+Once installed, you can write and compile Java programs using javac and run them with java.
+
+-Setting Up an IDE
+
+To write Java programs efficiently, you need an IDE (Integrated Development Environment) like IntelliJ IDEA, Eclipse, or VS Code.
+
+Download & Install an IDE:
+
+IntelliJ IDEA (Recommended) – JetBrains
+
+Eclipse IDE – Eclipse
+
+VS Code – Visual Studio Code (with Java extensions)
+
+Open the IDE and install the Java Development Kit (JDK) if not already installed.
+
+Set up the JDK path in the IDE settings.
+
+Create a new Java project, write your first program, and run it!
+
+Use the built-in code editor, debugger, and compiler for efficient coding.
+
+-Writing and Running Your First Java Program
+
+To write and run your first Java program, follow these steps:
+
+Open an IDE (IntelliJ IDEA, Eclipse, or VS Code) or use a simple text editor.
+
+Create a new Java file named HelloWorld.java.
+
+Write the following Java code:
+
+public class HelloWorld {
+    public static void main(String[] args) {
+        System.out.println("Hello, World!");
+    }
+}
+Compile the program using javac HelloWorld.java.
+
+Run the program using java HelloWorld.
+
+If successful, it will print: Hello, World!. 
+
+1.3 Basic Syntax and Structure
+
+-Structure of a Java Program
+
+A Java program follows a specific structure. Here’s a simple example:
+
+// Package declaration (optional)
+package mypackage;
+
+// Class declaration
+public class HelloWorld {
+    // Main method - Entry point of the program
+    public static void main(String[] args) {
+        System.out.println("Hello, World!");
+    }
+}
+Package (Optional) groups related classes.
+
+Class contains the code.
+
+Main method (main) is where execution starts.
+
+Statements inside {} define program logic.
+
+-Java Keywords and Naming Conventions
+
+Java has reserved keywords that have special meanings and cannot be used as variable or method names. Examples include:
+public, static, class, int, void, return, if, else, while, for.
+
+Naming Conventions:
+
+Classes: Start with an uppercase letter (MyClass).
+
+Methods & Variables: Start with a lowercase letter (myMethod, myVariable).
+
+Constants: Use uppercase with underscores (MAX_VALUE).
+
+Packages: Use all lowercase (com.example).
+
+Following proper naming conventions improves readability and maintainability.
+
+-Comments and Documentation
+
+Java allows comments to explain code and improve readability. There are three types:
+
+Single-line comment (//): Used for short explanations.
+
+// This prints a message
+System.out.println("Hello, Java!");
+Multi-line comment (/* ... */): Used for longer descriptions.
+
+/* This is a 
+   multi-line comment */
+JavaDoc comment (/** ... */): Used for documentation generation.
+
+/**
+ * This method calculates the sum of two numbers.
+ */
+Comments do not affect execution but help in code maintenance.
+
+1.4 Data Types and Variables
+
+-Primitive Data Types
+
+In Java, primitive data types are built-in types that store simple values. There are eight primitive types:
+
+Integer types: byte (8-bit), short (16-bit), int (32-bit), long (64-bit)
+
+Floating-point types: float (32-bit), double (64-bit)
+
+Character type: char (16-bit Unicode)
+
+Boolean type: boolean (true/false)
+
+Example:
+
+int age = 25;
+double price = 99.99;
+boolean isJavaFun = true;
+Primitives do not store objects and are stored directly in memory.
+
+-Reference Data Types
+
+Reference data types store memory addresses instead of actual values. Common examples:
+
+Strings (String) → Sequence of characters.
+
+Arrays (int[] arr = {1,2,3};) → Collection of elements.
+
+Objects (User-defined classes).
+
+Wrapper Classes (Integer, Double, Boolean).
+
+Example:
+
+String name = "Java";
+int[] numbers = {1, 2, 3};
+Reference types store objects and require heap memory.
+
+-Variable Declaration and Initialization
+
+In Java, variables store data and must be declared and initialized before use.
+
+Declaration: Specifies type & name.
+
+int age; // Declaring a variable
+Initialization: Assigns a value.
+
+age = 25; // Assigning a value
+Declaration + Initialization (preferred):
+
+int age = 25;
+Multiple variables:
+
+int a = 5, b = 10;
+Variables must match their declared data type.
+
+-Type Casting and Conversion
+
+Type casting converts one data type into another. There are two types:
+
+Implicit Casting (Widening): Smaller → Larger type (Automatic).
+
+int num = 10;
+double d = num; // Implicit (int → double)
+Explicit Casting (Narrowing): Larger → Smaller type (Manual).
+
+double pi = 3.14;
+int roundedPi = (int) pi; // Explicit (double → int)
+Implicit conversion is safe, while explicit conversion may lose data.
+
+1.5 Operators and Expressions
+
+-Arithmetic, Relational, Logical, and Bitwise Operators
+
+Operators in Java perform operations on variables and values. The main types are:
+
+Arithmetic Operators (+, -, *, /, %) – Perform basic math.
+
+int sum = 5 + 3;  // 8
+Relational Operators (>, <, >=, <=, ==, !=) – Compare values.
+
+boolean result = (10 > 5); // true
+Logical Operators (&&, ||, !) – Used with boolean values.
+
+boolean check = (true && false); // false
+Bitwise Operators (&, |, ^, ~, <<, >>) – Operate on bits.
+
+-Operator Precedence and Associativity
+
+Basic Explanation (Clear & Precise - 7-8 lines)
+Operator precedence determines which operation is performed first in an expression. Higher precedence operators are executed before lower ones.
+
+Precedence Example (Multiplication * happens before Addition +):
+
+int result = 5 + 3 * 2; // 5 + (3 * 2) = 11
+Associativity decides order when operators have the same precedence.
+
+Left to Right: +, -, *, /
+
+Right to Left: =, ++, --
+
+Use parentheses () to control execution order.
+
+-Using Expressions in Programs
+
+Basic Explanation (Clear & Precise - 7-8 lines)
+Expressions are combinations of values, variables, and operators that produce a result.
+
+Example:
+
+int sum = 5 + 3; // Expression: 5 + 3
+Expressions are used in conditions and loops:
+
+if (sum > 5) {
+    System.out.println("Greater than 5");
+}
+Expressions help make programs dynamic.

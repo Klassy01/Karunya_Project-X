@@ -1,0 +1,116 @@
+Module 2: Object-Oriented Programming (OOP) Concepts
+
+2.1 Introduction to OOP
+
+-Encapsulation
+
+Encapsulation follows the principle of data hiding by making variables private and exposing getter and setter methods for controlled access.
+
+Example:
+
+class BankAccount {
+    private double balance; 
+
+    public double getBalance() { return balance; }
+    public void deposit(double amount) { balance += amount; }
+}
+By preventing direct access, encapsulation ensures integrity and allows internal changes without affecting external code.
+
+-Inheritance
+
+Intermediate Explanation (More Detailed & Slightly Tougher - 8-9 lines)
+Inheritance supports code reuse and hierarchy, where the child class inherits attributes and methods of the parent class.
+
+Example:
+
+class Vehicle {
+    int speed = 60;
+    void showSpeed() { System.out.println("Speed: " + speed); }
+}
+
+class Car extends Vehicle {
+    void honk() { System.out.println("Beep!"); }
+}
+Car inherits showSpeed() from Vehicle, promoting efficient code reuse.
+
+-Polymorphism
+
+Polymorphism allows a method or operator to behave differently based on the context.
+
+Compile-time (Method Overloading) – Same method name, different parameters.
+
+class Shape {
+    void draw(int size) { System.out.println("Drawing with size " + size); }
+    void draw(String color) { System.out.println("Drawing with color " + color); }
+}
+Runtime (Method Overriding) – Child class redefines parent class method.
+
+class Animal {
+    void sound() { System.out.println("Some sound"); }
+}
+
+class Cat extends Animal {
+    void sound() { System.out.println("Meow"); }
+}
+Polymorphism improves flexibility and simplifies maintenance.
+
+-Abstraction
+
+Abstraction allows defining a general template for classes without specifying full details.
+
+Example:
+
+abstract class Shape {
+    abstract void draw();
+}
+
+class Circle extends Shape {
+    void draw() { System.out.println("Drawing a circle"); }
+}
+It ensures code scalability by forcing child classes to provide specific implementations.
+
+2.2 Classes and Objects
+
+-Defining Classes and Creating Objects
+
+Classes encapsulate data (state) and behavior (methods), defining how objects should function. Objects are created dynamically in heap memory, and each object has its own copy of instance variables but shares the class’s method definitions.
+
+Java follows an object-oriented paradigm, meaning data and behavior are grouped into objects rather than existing separately. Objects are referenced through variables, and their lifecycle is managed by automatic garbage collection, which removes unused objects. Classes can also include constructors, which automatically initialize objects during creation.
+
+-Instance Variables and Methods
+
+Instance variables are stored in heap memory, and their values are unique to each object. Java provides access modifiers (private, public, protected) to control access to these variables, ensuring data security.
+
+Instance methods are non-static methods that require an object to be called. They can access both instance variables and other instance methods within the same class. If multiple objects are created, they share method definitions but hold individual values of instance variables, making object-oriented programming efficient and modular.
+
+-Constructors and Constructor Overloading
+
+Constructors support overloading, allowing multiple constructors with different parameter lists. This flexibility enables custom initialization based on different input values.
+
+Unlike methods, constructors cannot be inherited but can be accessed through super() when dealing with parent-child relationships in Java. The use of parameterized constructors provides fine-grained control over object properties, ensuring efficient and meaningful initialization, especially in complex programs.
+
+-Implementing Interfaces
+
+Interfaces define behavioral blueprints for classes without specifying implementation details. Java introduced default and static methods in interfaces, allowing them to contain some logic without forcing implementation in subclasses.
+
+Interfaces are useful in large-scale projects where different components need to interact seamlessly while remaining independent of each other. This decoupling enhances maintainability and scalability, making interfaces a powerful abstraction mechanism in Java.
+
+2.3 Advanced OOP Concepts
+
+-Abstract Classes vs Interfaces
+
+Abstract classes can have constructors, instance variables, and implemented methods, whereas interfaces primarily contain method declarations (except for default and static methods introduced in Java 8).
+
+A class extends an abstract class (single inheritance) but can implement multiple interfaces, making interfaces more flexible in large projects. Abstract classes are useful when related classes share common behavior, while interfaces ensure strict separation of contract and implementation, promoting loose coupling.
+
+-Method Overloading and Overriding
+
+Method overloading is a form of compile-time polymorphism, where the correct method is determined at compile-time based on arguments passed. It enhances code maintainability by reducing redundant method names.
+
+Method overriding follows the Liskov Substitution Principle (LSP), ensuring an overridden method retains the same signature and return type as in the superclass. Overriding methods can have weaker but not stronger access modifiers and cannot override final methods. It is a key feature in dynamic method dispatch, allowing Java to support flexible and extensible designs.
+
+-The ‘instanceof’ Operator
+
+The instanceof operator is commonly used in inheritance hierarchies to determine an object’s actual type before performing type casting. It ensures runtime type safety, preventing exceptions.
+
+Java allows instanceof checks for interfaces, making it useful for polymorphic behavior. If a class implements an interface, instanceof can verify the implementation dynamically. However, excessive use of instanceof can indicate poor design, as well-structured polymorphic methods should eliminate the need for type checking.

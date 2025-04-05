@@ -1,0 +1,46 @@
+/* Contact Page Container */
+.contact-container {
+    text-align: center;
+    padding: 50px;
+    background: black; /* Maintain theme */
+    color: white; /* Ensure visibility */
+  }
+  
+  /* Contact Title */
+  .contact-container h1 {
+    font-size: 36px;
+    font-weight: bold;
+    color: white; /* Ensures visibility */
+    margin-bottom: 20px;
+  }
+  
+  /* Contact Details */
+  .contact-container p {
+    font-size: 18px;
+    color: white; /* Changed from black to white for visibility */
+    margin-bottom: 10px;
+  }
+  
+  /* Highlight Effect on Hover */
+  .contact-container p:hover {
+    color: #ffcc00; /* Yellow highlight on hover */
+    transition: 0.3s;
+  }
+  
+  /* Add Some Simple Animations */
+  @keyframes slideIn {
+    from {
+      opacity: 0;
+      transform: translateY(10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  .contact-container h1,
+  .contact-container p {
+    animation: slideIn 1s ease-in-out;
+  }
+  

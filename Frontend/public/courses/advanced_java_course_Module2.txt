@@ -1,0 +1,144 @@
+Module 2: Object-Oriented Programming (OOP) Concepts
+
+2.1 Introduction to OOP
+
+-Encapsulation
+
+Encapsulation is a fundamental OOP principle that binds data and behavior together while restricting direct external access. It enhances security, modularity, and maintainability.
+
+Example:
+
+class Employee {
+    private int salary; // Private variable
+
+    public int getSalary() { return salary; }
+    public void setSalary(int amount) {
+        if (amount > 0) salary = amount;  // Controlled modification
+    }
+}
+Encapsulation decouples implementation from usage, allowing changes in the class without breaking external code.
+
+-Inheritance
+
+Inheritance enables hierarchical class structures, allowing specialized behavior while reusing common logic. Java supports:
+
+Single Inheritance: One class inherits another.
+
+Multilevel Inheritance: A class inherits from another inherited class.
+
+Hierarchical Inheritance: Multiple classes inherit from one parent.
+
+Example:
+
+class Animal {
+    void eat() { System.out.println("Eating..."); }
+}
+
+class Mammal extends Animal {
+    void walk() { System.out.println("Walking..."); }
+}
+
+class Dog extends Mammal {
+    void bark() { System.out.println("Barking..."); }
+}
+Inheritance reduces redundancy but requires careful design to avoid deep inheritance chains.
+
+-Polymorphism
+
+Polymorphism enables dynamic method dispatch, where the correct method is determined at runtime based on the object type.
+
+Example of method overriding:
+
+class Employee {
+    void work() { System.out.println("Working..."); }
+}
+
+class Developer extends Employee {
+    void work() { System.out.println("Coding..."); }  // Overriding
+}
+Java resolves overridden methods dynamically using virtual method invocation.
+
+Polymorphism also applies to interfaces, where different classes implement the same methods but with unique behavior.
+
+Example:
+
+interface Animal {
+    void makeSound();
+}
+
+class Dog implements Animal {
+    public void makeSound() { System.out.println("Bark!"); }
+}
+Polymorphism simplifies code structure and allows extensibility in applications.
+
+-Abstraction
+
+Abstraction in Java is implemented using abstract classes and interfaces:
+
+Abstract Class – Can have both abstract (unimplemented) and concrete methods.
+
+Interface – Defines a contract that implementing classes must follow.
+
+Example:
+
+interface Animal {
+    void eat();  // Abstract method (no body)
+}
+
+class Lion implements Animal {
+    public void eat() { System.out.println("Lion eats meat"); }
+}
+Abstraction ensures modularity and allows different components to work independently, making large-scale applications manageable.
+
+2.2 Classes and Objects
+
+-Defining Classes and Creating Objects
+
+Classes in Java define the structure and functionality of objects. They support modular, reusable, and scalable code development. Objects created from a class interact using method calls, following the encapsulation principle, where data is kept private and accessed through methods.
+
+Memory allocation for objects occurs in heap memory, while references are stored in stack memory. Java's automatic garbage collection handles memory management, preventing memory leaks. The object lifecycle involves creation, usage, and destruction, making Java memory-efficient. Advanced class concepts include inner classes, anonymous objects, and serialization, which further enhance the object-oriented approach in large-scale applications.
+
+
+
+-Instance Variables and Methods
+
+Instance variables are defined outside any method but within a class. These variables persist as long as the object exists, and their values can be manipulated using getter and setter methods. Java uses the this keyword to differentiate instance variables from local variables inside methods.
+
+Instance methods define behavior and allow objects to interact. They support method overloading and can be overridden in subclasses to enable polymorphism. Using instance methods over static methods promotes better design principles like data abstraction, encapsulation, and modular programming, ensuring well-structured and maintainable code.
+
+-Constructors and Constructor Overloading
+
+Java supports different types of constructors, including default, parameterized, and copy constructors. Parameterized constructors allow dynamic object creation with specific initial values, while copy constructors clone object properties.
+
+Constructor overloading enables a class to provide multiple ways of initializing objects, making the class flexible and adaptable. Constructors also play a vital role in inheritance, where a subclass constructor can call a superclass constructor using the super keyword. Effective use of constructors reduces redundancy and promotes cleaner, well-structured code in Java applications.
+
+-Implementing Interfaces
+
+Interfaces support multiple inheritance, allowing a class to implement multiple interfaces simultaneously. This helps in designing modular and reusable code without the restrictions of class hierarchy.
+
+Interfaces are extensively used in Java frameworks and APIs, such as functional interfaces in Java 8's lambda expressions, event handling in GUI applications, and dependency injection in Spring framework. Understanding interfaces is essential for designing scalable, maintainable, and loosely coupled Java applications, making them a cornerstone of enterprise-level programming.
+
+2.3 Advanced OOP Concepts
+
+-Abstract Classes vs Interfaces
+
+Abstract classes and interfaces serve different purposes in Java’s object-oriented paradigm. Abstract classes define partial implementation, making them suitable for hierarchical relationships (e.g., a Vehicle class with shared attributes like speed and fuel). Interfaces define pure abstraction, ensuring contract enforcement (e.g., a Flyable interface for birds, planes, and drones).
+
+Java 8 introduced default and static methods in interfaces, reducing the need for abstract classes in some cases. Abstract classes support constructors and protected methods, making them better for inheritance-based designs, whereas interfaces are ideal for designing plugin-like architectures. Understanding their trade-offs is crucial for scalable and maintainable application development.
+
+-Method Overloading and Overriding
+
+Method overloading leverages static binding, meaning the method call is resolved at compile time. It allows flexible APIs where different input parameters require different processing (e.g., print(int) and print(String)). Java also supports varargs in overloading, enabling variable-length arguments.
+
+Method overriding implements dynamic binding (runtime polymorphism), enabling late method resolution. The @Override annotation ensures correctness. Overridden methods support co-variant return types, meaning they can return a subclass type instead of the parent type. Java also restricts overriding of static methods (method hiding) and private methods (as they are not inherited). Understanding these concepts is crucial for object-oriented design and flexible software architecture.
+
+-The ‘instanceof’ Operator
+
+The instanceof operator performs runtime type identification, checking an object’s actual class while considering inheritance relationships. It is particularly useful in dynamic casting scenarios, where incorrect casting could lead to runtime errors.
+
+From Java 14, instanceof supports Pattern Matching, eliminating the need for explicit casting:
+
+if (obj instanceof String str) {
+    System.out.println(str.length()); // No explicit cast needed
+}
+However, heavy reliance on instanceof can violate OOP principles like polymorphism and abstraction. Instead of using instanceof, method overriding and polymorphic calls should be preferred for designing flexible and extendable applications.

@@ -1,0 +1,198 @@
+Module 3: Core Java APIs
+
+3.1 Strings and String Manipulation
+
+- String Methods and Operations
+
+Strings in Java are immutable, meaning their values cannot be changed once created. Java provides the String class with various methods for manipulation, such as .length(), .charAt(), .toUpperCase(), .toLowerCase(), .trim(), .substring(), and .replace().
+
+String comparison is done using .equals() for content comparison and == for reference comparison. The .split() method allows splitting a string into an array based on a delimiter. These methods are essential for handling text-based data efficiently in Java applications.
+
+- String Concatenation and Formatting
+
+String concatenation in Java is performed using the + operator or the .concat() method. However, using + creates new objects, leading to performance overhead.
+
+String formatting is done using String.format(), which allows inserting variables dynamically into a formatted string. The printf() method in Java supports similar functionality with format specifiers like %s, %d, and %f for structured output.
+
+- StringBuilder and StringBuffer
+
+Since String objects are immutable, Java provides StringBuilder and StringBuffer for efficient string manipulation. These classes allow modifications without creating new objects, improving performance.
+
+StringBuilder is not synchronized, making it faster but unsafe in multi-threaded environments. StringBuffer is thread-safe due to synchronization, ensuring consistency but with slower performance.
+
+3.2 Arrays and Collections
+
+- Single-Dimensional and Multi-Dimensional Arrays
+
+Arrays in Java are fixed-size data structures that store elements of the same type. A single-dimensional array represents a list of elements in contiguous memory locations, improving access speed.
+
+A multi-dimensional array (like a 2D array) represents a matrix-like structure, where each element has multiple indices. Java supports jagged arrays, where rows can have different lengths, enhancing memory efficiency.
+
+- Collections Framework Overview
+
+The Collections Framework in Java provides a unified architecture for handling and manipulating groups of objects efficiently. It includes interfaces like List, Set, and Map, along with concrete implementations such as ArrayList, HashSet, and HashMap.
+
+This framework allows dynamic data storage, unlike arrays, which have a fixed size. It supports key operations like sorting, searching, and iteration. The collections improve code reusability, performance, and scalability by providing optimized data structures.
+
+- List, Set, and Map Implementations
+
+Java provides List, Set, and Map implementations to handle collections efficiently:
+
+List (Ordered, allows duplicates) – ArrayList, LinkedList
+
+Set (Unique elements, unordered) – HashSet, TreeSet
+
+Map (Key-value pairs, fast lookups) – HashMap, TreeMap
+
+Lists maintain insertion order, while Sets discard duplicates. Maps optimize data retrieval by associating values with unique keys.
+
+- Iterators and Enhanced For-Loop
+
+Iterators provide a way to traverse collections element by element. The Iterator interface includes three main methods:
+
+.hasNext() – Checks if more elements exist
+
+.next() – Retrieves the next element
+
+.remove() – Deletes the current element
+
+The enhanced for-loop (for-each) simplifies iteration by automatically handling indexing and boundary checks. It is commonly used with arrays and collections.
+
+3.3 Exception Handling
+
+- Checked and Unchecked Exceptions
+
+Exceptions in Java are classified into Checked and Unchecked exceptions.
+
+Checked exceptions (e.g., IOException, SQLException) must be handled using try-catch or declared with throws, as they occur during compile-time.
+
+Unchecked exceptions (e.g., NullPointerException, ArrayIndexOutOfBoundsException) occur at runtime due to logic errors and do not require mandatory handling.
+
+Java’s exception handling mechanism ensures graceful failure and debugging, preventing abrupt termination of programs.
+
+- Try-Catch Blocks and Finally Clause
+
+A try-catch block in Java is used to handle exceptions and prevent program crashes.
+
+The try block contains code that might throw an exception.
+
+The catch block handles the exception and prevents termination.
+
+The finally block always executes, useful for cleanup (e.g., closing files).
+
+Example:
+
+try {
+    int result = 10 / 0;  // Causes ArithmeticException
+} catch (ArithmeticException e) {
+    System.out.println("Cannot divide by zero!");
+} finally {
+    System.out.println("Execution completed.");
+}
+
+- Creating Custom Exceptions
+
+Java allows developers to define custom exceptions by extending Exception (for checked exceptions) or RuntimeException (for unchecked exceptions).
+
+Example:
+
+class CustomException extends Exception {
+    public CustomException(String message) {
+        super(message);
+    }
+}
+Custom exceptions help in application-specific error handling, improving debugging clarity.
+
+3.4 Input and Output (I/O) Streams
+
+- Byte and Character Streams
+
+Java provides Byte Streams for handling binary data (images, audio, files) and Character Streams for text-based data.
+
+Byte Streams (InputStream, OutputStream) process raw bytes.
+
+Character Streams (Reader, Writer) process textual data with Unicode support.
+
+Character streams are preferred for internationalization, as they handle multiple languages efficiently.
+
+- Reading and Writing Files
+
+Java provides FileReader and FileWriter for handling text files and FileInputStream and FileOutputStream for handling binary files.
+
+FileReader and FileWriter work with character data, making them suitable for text files.
+
+FileInputStream and FileOutputStream handle raw byte data, useful for images and videos.
+
+Files.readAllLines() and Files.write() (from java.nio.file.Files) simplify file operations.
+
+Proper exception handling with IOException and using try-with-resources ensures efficient file handling and resource management.
+
+- Buffered Streams
+
+Buffered Streams in Java improve file reading and writing efficiency by reducing the number of disk access operations.
+
+BufferedReader and BufferedWriter process text files efficiently.
+
+BufferedInputStream and BufferedOutputStream work with binary files.
+
+They use an internal buffer to store chunks of data, reducing I/O operations.
+
+Using Buffered Streams is recommended when working with large files to enhance performance.
+
+- Serialization and Deserialization
+
+Serialization converts Java objects into a byte stream to store or transmit them. Deserialization reconstructs the object from this stream.
+
+ObjectOutputStream writes objects to a file.
+
+ObjectInputStream reads objects back into memory.
+
+Objects must implement Serializable to be eligible for serialization.
+
+Serialization is useful for saving application states, transferring objects over networks, and caching.
+
+3.5 Utility Classes
+
+- java.time (Date and Time API)
+
+The java.time package introduced in Java 8 provides a modern API for handling dates and times efficiently.
+
+LocalDate represents date without time.
+
+LocalTime represents time without date.
+
+LocalDateTime represents both date and time.
+
+ZonedDateTime handles time zones.
+
+This API is immutable and thread-safe, unlike the older java.util.Date. The DateTimeFormatter class formats and parses dates/times.
+
+- Math Class
+
+The Math class in Java provides mathematical functions like:
+
+Math.abs() for absolute value.
+
+Math.pow() for exponentiation.
+
+Math.sqrt() for square root.
+
+Math.max() and Math.min() for comparison.
+
+It also includes trigonometric functions (sin(), cos(), tan()) and constants (Math.PI, Math.E).
+
+- Formatting with DecimalFormat and NumberFormat
+
+DecimalFormat and NumberFormat are used to format numbers and currency in Java.
+
+DecimalFormat allows custom formatting patterns (#,###.00).
+
+NumberFormat provides locale-specific formatting for different countries.
+
+parse() method converts formatted strings back into numbers.
+
+Example:
+
+DecimalFormat df = new DecimalFormat("#,###.00");
+System.out.println(df.format(123456.789)); // Output: 123,456.79
+This is useful for financial applications and reports.

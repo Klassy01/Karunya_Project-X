@@ -1,0 +1,196 @@
+Module 3: Core Java APIs
+
+3.1 Strings and String Manipulation
+
+- String Methods and Operations
+
+Java optimizes string storage using interning, where identical string literals share memory locations within the String Constant Pool. When concatenating strings dynamically, the compiler may optimize expressions using StringBuilder for performance efficiency.
+
+String operations rely heavily on UTF-16 encoding, supporting multilingual characters but requiring efficient memory management in high-performance applications. Since substring() before Java 7 shared the original string’s memory, it led to memory leaks. Java 7+ versions fixed this by creating independent substring objects.
+
+Efficient string handling involves leveraging char arrays, avoiding excessive object creation, and considering alternative encodings for memory-constrained environments.
+
+- String Concatenation and Formatting
+
+Concatenation performance varies based on usage. The JVM optimizes compile-time concatenations, but runtime concatenations using + result in excessive object creation. The StringBuilder class improves performance as it modifies character sequences in-place.
+
+For large-scale applications, using byte buffers or stream-based manipulation is recommended to reduce garbage collection overhead. The format() method supports localization via Locale, making it crucial for internationalized applications. Additionally, zero-copy techniques, such as direct memory access, help optimize string processing in high-throughput systems.
+
+- StringBuilder and StringBuffer
+
+Internally, StringBuilder and StringBuffer maintain a resizable character array, expanding when needed to optimize memory usage. The initial capacity impacts performance, as frequent reallocations increase computation overhead.
+
+In concurrent programming, replacing StringBuffer with thread-local instances of StringBuilder can improve efficiency while maintaining thread safety. The JVM’s Just-In-Time (JIT) compiler optimizes StringBuilder usage in loops, replacing + concatenations with efficient buffer-based operations.
+
+Performance tuning requires understanding allocation thresholds and choosing between synchronization overhead (StringBuffer) or non-thread-safe high-performance operations (StringBuilder).
+
+3.2 Arrays and Collections
+
+- Single-Dimensional and Multi-Dimensional Arrays
+
+The JVM optimizes array storage using compressed oops for efficient memory allocation. Accessing elements benefits from CPU caching, but poor usage leads to cache misses, affecting performance.
+
+Multi-dimensional arrays increase complexity in memory access patterns, impacting branch prediction efficiency. For large datasets, heap allocation and garbage collection overhead become performance bottlenecks. ByteBuffer-backed arrays provide better memory management in high-performance applications.
+
+- Collections Framework Overview
+
+The Java Collections Framework (JCF) optimizes data handling by using balanced trees, hash tables, and linked structures under the hood. Time complexities vary across implementations:
+
+HashMap and HashSet: O(1) lookup (average case), O(n) (worst case due to collisions)
+
+TreeMap and TreeSet: O(log n) due to red-black tree balancing
+
+LinkedList: O(n) lookup, O(1) insertions/removals
+
+Advanced synchronization mechanisms like Concurrent Collections avoid bottlenecks in multi-threaded environments. Memory efficiency is achieved through lazy loading, soft references, and memory pooling techniques. Choosing the right data structure depends on performance trade-offs like retrieval speed vs. insertion cost.
+
+- List, Set, and Map Implementations
+
+Internally, HashMap uses bucket arrays with linked lists (Java 7) and balanced trees (Java 8+ for collision handling). The default load factor (0.75) triggers rehashing when the threshold is exceeded.
+
+TreeMap leverages a red-black tree, ensuring O(log n) insertions and retrievals. LinkedHashMap maintains insertion order, useful for caching applications.
+
+Performance trade-offs:
+
+ArrayList vs. LinkedList: Use ArrayList when random access is needed; LinkedList is better for frequent insertions/deletions.
+
+HashMap vs. TreeMap: HashMap is faster for lookups, while TreeMap ensures sorted ordering.
+
+Thread-safe alternatives like ConcurrentHashMap and CopyOnWriteArrayList prevent race conditions in multi-threaded environments.
+
+- Iterators and Enhanced For-Loop
+
+Java provides fail-fast iterators that detect modifications by checking an internal modification counter (modCount). If another thread modifies the collection, a ConcurrentModificationException is thrown to prevent inconsistent state access.
+
+Fail-safe iterators (used in ConcurrentHashMap) create a copy of the data structure, allowing iteration without conflicts but with potential stale data.
+
+Performance considerations:
+
+Iterator traversal is O(n), but optimized via lazy evaluation.
+
+LinkedList iterator has O(1) insert/remove time complexity, whereas ArrayList requires O(n) shifts.
+
+Parallel streams (Java 8) use Spliterators for better multi-core processing, improving iteration performance in large collections.
+
+3.3 Exception Handling
+
+- Checked and Unchecked Exceptions
+
+Internally, exceptions in Java use stack unwinding to track error sources. When an exception occurs, the JVM propagates it up the call stack until a try-catch block handles it or it reaches the main method, causing termination.
+
+Checked exceptions ensure external failures (e.g., I/O, database issues) are addressed, while unchecked exceptions mainly indicate programming errors (e.g., ArithmeticException).
+
+Java also supports multi-catch blocks (catch (IOException | SQLException e)) and try-with-resources (try (BufferedReader br = new BufferedReader(..)) {}) for automatic resource management.
+
+- Try-Catch Blocks and Finally Clause
+
+Exception handling improves fault tolerance, but excessive try-catch blocks can impact performance. The JVM optimizes exception handling using stack traces, where each method call is stored in an internal execution stack.
+
+The finally block guarantees execution even if the return statement appears in try or catch, unless the JVM terminates (e.g., System.exit(0)). In try-with-resources, any class implementing AutoCloseable (like FileReader) automatically closes in finally.
+
+Using try-catch should be balanced—only catch exceptions that can be handled, and propagate critical ones using throws.
+
+- Creating Custom Exceptions
+
+Internally, custom exceptions inherit exception-handling properties from Throwable. Adding custom constructors allows passing messages and cause-chaining (super(message, cause)).
+
+Logging frameworks like SLF4J or Log4J are preferred over System.out.println() for exception logging. Checked custom exceptions enforce explicit handling, while unchecked ones are useful for logical errors.
+
+Best practices include providing detailed messages, avoiding redundant exception types, and ensuring efficient logging for debugging.
+
+3.4 Input and Output (I/O) Streams
+
+- Byte and Character Streams
+
+Internally, byte streams work with binary formats, while character streams apply encoding (UTF-8, UTF-16).
+
+Buffered streams (BufferedReader, BufferedWriter) use internal buffers for batch processing instead of single-character reads, improving performance. Java supports stream chaining, allowing multiple streams to be combined (new BufferedReader(new FileReader("data.txt"))).
+
+Using NIO (Non-blocking I/O) Channels, Java optimizes large-scale file handling by using direct memory buffers and parallel processing.
+
+- Reading and Writing Files
+
+In Java, file handling involves buffering, encoding, and performance optimizations. The Files API (java.nio.file.Files) offers memory-mapped file operations for handling large files efficiently.
+
+NIO (New Input/Output) Channels (FileChannel) enable direct memory access and non-blocking I/O, making them ideal for high-performance applications.
+
+Example using Files.write():
+
+Path path = Paths.get("output.txt");
+Files.write(path, Arrays.asList("Line 1", "Line 2"), StandardOpenOption.CREATE);
+Using try-with-resources ensures files are properly closed, preventing memory leaks and file locks.
+
+- Buffered Streams
+
+Internally, BufferedReader and BufferedWriter store temporary data chunks in an internal buffer (default 8 KB) before reading/writing, reducing disk I/O overhead.
+
+Example of BufferedOutputStream:
+
+try (BufferedOutputStream bos = new BufferedOutputStream(new FileOutputStream("output.dat"))) {
+    bos.write("Hello, Buffered Stream!".getBytes());
+}
+Java also provides Piped Streams (PipedInputStream and PipedOutputStream) for inter-thread communication, allowing fast data transfer between running processes.
+
+- Serialization and Deserialization
+
+Serialization allows deep object persistence, but can lead to high memory usage and compatibility issues if the class structure changes.
+
+Custom serialization using writeObject() and readObject() enables optimized storage:
+
+private void writeObject(ObjectOutputStream out) throws IOException {
+    out.writeUTF(name);
+}
+private void readObject(ObjectInputStream in) throws IOException {
+    name = in.readUTF();
+}
+Modern applications prefer JSON serialization (Gson, Jackson) for platform-independent storage and transmission.
+
+3.5 Utility Classes
+
+- java.time (Date and Time API)
+
+The java.time API supports ISO-8601 standards and provides Temporal Adjusters for complex date manipulations.
+
+ZoneId and ZonedDateTime handle time zones and daylight saving time.
+
+Clock allows system-independent time retrieval.
+
+Chronology supports non-Gregorian calendars (e.g., Thai Buddhist, Hijrah).
+
+Example: Converting LocalDateTime to UTC:
+
+ZonedDateTime zonedDateTime = LocalDateTime.now().atZone(ZoneId.of("UTC"));
+System.out.println(zonedDateTime);
+This API ensures thread-safety, immutability, and better performance in date-time operations.
+
+- Math Class
+
+The Math class relies on hardware-optimized algorithms, ensuring high precision and performance.
+
+StrictMath provides deterministic results across platforms.
+
+Bitwise operations like Math.floorDiv() ensure integer division without floating-point errors.
+
+Math.hypot(x, y) efficiently calculates hypotenuse length without overflow.
+
+Example: Using logarithm and exponentiation:
+
+double value = Math.exp(Math.log(10)); // Returns 10
+This class is essential for scientific computing, simulations, and cryptography.
+
+- Formatting with DecimalFormat and NumberFormat
+
+The DecimalFormat class allows custom symbols, rounding modes, and scientific notation.
+
+"0" forces a digit, while "#" is optional.
+
+RoundingMode ensures precise control over decimal rounding behavior.
+
+Example: Using custom symbols:
+
+DecimalFormatSymbols symbols = new DecimalFormatSymbols();
+symbols.setDecimalSeparator('.');
+symbols.setGroupingSeparator(',');
+DecimalFormat df = new DecimalFormat("#,###.00", symbols);
+System.out.println(df.format(9876543.21)); // Output: 9,876,543.21
+These classes are essential for internationalization and high-precision calculations.

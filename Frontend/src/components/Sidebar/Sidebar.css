@@ -1,0 +1,62 @@
+/* Sidebar Container */
+.sidebar {
+  width: 230px; /* Adjusted width */
+  height: 100vh;
+  background: black;
+  color: white;
+  position: fixed;
+  left: 0;
+  top: 0;
+  padding-top: 20px;
+  transition: all 0.3s ease-in-out;
+  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.5);
+}
+
+/* Sidebar Logo */
+.sidebar-logo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-bottom: 20px;
+}
+
+.sidebar-logo img {
+  width: 50px; /* Adjust logo size */
+  height: auto;
+}
+
+/* Sidebar Navigation */
+.sidebar ul {
+  list-style: none;
+  padding: 0;
+}
+
+.sidebar ul li {
+  padding: 15px;
+  text-align: center;
+}
+
+.sidebar ul li a {
+  color: white;
+  text-decoration: none;
+  font-size: 18px;
+  display: block;
+  transition: 0.3s;
+}
+
+/* Highlight Active Page */
+.sidebar ul li a:hover,
+.sidebar ul li.active a {
+  background: white;
+  color: black;
+  font-weight: bold;
+  border-radius: 5px;
+}
+
+/* Ensure Content Adjusts */
+.main-content {
+  margin-left: 230px; /* Matches sidebar width */
+  padding: 20px;
+  background: white;
+  color: black;
+}

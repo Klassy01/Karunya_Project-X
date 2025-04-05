@@ -1,0 +1,118 @@
+Module 2: Object-Oriented Programming (OOP) Concepts
+
+2.1 Introduction to OOP
+
+-Encapsulation
+
+Encapsulation is hiding data and restricting access to it using private variables and public methods. It helps protect data from accidental modification.
+
+Example:
+
+class Person {
+    private String name;  // Private variable
+
+    public void setName(String newName) {
+        name = newName;  // Public method to modify name
+    }
+}
+This ensures controlled access to variables, improving security and maintainability.
+
+-Inheritance
+
+Basic Explanation (Clear & Precise - 7-8 lines)
+Inheritance allows a child class to inherit properties and methods from a parent class using the extends keyword.
+
+Example:
+
+class Animal {
+    void makeSound() { System.out.println("Some sound"); }
+}
+
+class Dog extends Animal {
+    void bark() { System.out.println("Woof!"); }
+}
+Here, Dog inherits makeSound() from Animal, reducing code duplication.
+
+-Polymorphism
+
+Basic Explanation (Clear & Precise - 7-8 lines)
+Polymorphism allows one action to be performed in different ways. It has two types:
+
+Method Overloading: Multiple methods with the same name but different parameters.
+
+Method Overriding: A child class redefines a method from its parent class.
+
+Example:
+
+class MathUtil {
+    int add(int a, int b) { return a + b; }
+    double add(double a, double b) { return a + b; }
+}
+This enables flexibility and reusability in code.
+
+-Abstraction
+
+Basic Explanation (Clear & Precise - 7-8 lines)
+Abstraction hides implementation details and shows only the essential features. It is achieved using abstract classes and interfaces.
+
+Example (Abstract Class):
+
+abstract class Vehicle {
+    abstract void start();  // Abstract method (no body)
+}
+
+class Car extends Vehicle {
+    void start() { System.out.println("Car starts with a key"); }
+}
+Abstraction reduces complexity by focusing on what an object does, not how.
+
+2.2 Classes and Objects
+
+-Defining Classes and Creating Objects
+
+In Java, a class is a blueprint for creating objects. It defines attributes (variables) and behaviors (methods). Objects are instances of a class that store their own unique data while sharing the same structure and behavior.
+
+To create an object, the new keyword is used, which allocates memory and initializes the object. A class can have multiple objects, each holding different values for its instance variables. Objects interact with each other through method calls, enabling real-world modeling of entities in Java programs.
+
+-Instance Variables and Methods
+
+Instance variables are variables defined in a class that belong to individual objects. Each object gets its own copy, meaning changes in one object do not affect others.
+
+Instance methods operate on these variables and define the behavior of the objects. They can modify instance variables, retrieve values, and perform object-specific operations. These methods play a crucial role in ensuring data encapsulation by providing controlled access to instance variables, promoting security and maintainability.
+
+-Constructors and Constructor Overloading
+
+A constructor is a special method that initializes objects when they are created. It has the same name as the class and does not have a return type. Java provides a default constructor if none is defined, but developers can create custom constructors to assign values to instance variables at the time of object creation.
+
+Constructors ensure that objects are properly initialized before use, improving reliability. Once an object is created, the constructor is automatically called, eliminating the need for explicit initialization in most cases.
+
+-Implementing Interfaces
+
+An interface is a Java construct that defines a set of abstract methods without implementing them. It acts as a contract, ensuring that any class that implements the interface provides concrete implementations for all declared methods.
+
+Interfaces allow multiple classes to follow the same set of rules, promoting code reusability and flexibility. Unlike abstract classes, interfaces support multiple inheritance, making them a fundamental tool for loose coupling and modular application design.
+
+2.3 Advanced OOP Concepts
+
+-Abstract Classes vs Interfaces
+
+Abstract classes and interfaces both provide a way to achieve abstraction in Java. An abstract class is a class that cannot be instantiated and may contain both abstract (unimplemented) and concrete (implemented) methods.
+
+An interface, on the other hand, only contains abstract methods (before Java 8) and is meant to define a blueprint for classes. Abstract classes are useful when a base class needs common functionality, while interfaces allow multiple inheritance and are best for defining rules that multiple classes must follow.
+
+-Method Overloading and Overriding
+
+Method overloading and overriding allow methods to be used in different ways. Overloading occurs when multiple methods in the same class have the same name but different parameter lists (number, type, or order).
+
+Overriding occurs when a subclass provides a new implementation of a method already defined in its superclass. Overloading improves code readability, while overriding enables runtime polymorphism, allowing subclasses to provide specialized behavior.
+
+-The ‘instanceof’ Operator
+
+The instanceof operator checks if an object is an instance of a specific class or subclass. It returns a boolean value (true or false). This is useful for type checking before performing operations on an object.
+
+Example:
+
+if (obj instanceof String) {
+    System.out.println("obj is a String");
+}
+This prevents ClassCastException when casting objects and ensures safe operations.

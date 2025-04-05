@@ -1,0 +1,264 @@
+Module 4: Advanced Java Concepts
+
+4.1 Generics
+
+-Generic Classes and Methods
+
+Generics allow type parameters to be specified in classes and methods, ensuring type safety at compile time.
+
+Instead of using Object, generics let us define parameterized types.
+
+A generic class is declared as class ClassName<T> {} where T is a placeholder for a type.
+
+This prevents type casting errors and improves code reusability.
+
+Example of a generic class:
+
+class Box<T> {  
+    private T value;  
+    public void setValue(T value) { this.value = value; }  
+    public T getValue() { return value; }  
+}
+This allows Box<Integer> or Box<String> without needing multiple class definitions.
+
+-Bounded Type Parameters
+
+Bounded type parameters restrict generic types to a specific hierarchy using extends.
+
+Example: <T extends Number> ensures T can only be a Number subclass.
+
+This allows using number-specific operations like doubleValue().
+
+Example:
+
+class Numeric<T extends Number> {  
+    private T num;  
+    public Numeric(T num) { this.num = num; }  
+    public double square() { return num.doubleValue() * num.doubleValue(); }  
+}
+This ensures only numeric types (Integer, Double, Float) are allowed.
+
+-Generics and the Collections Framework
+
+Generics are extensively used in the Collections Framework to enforce type safety.
+
+Before Java 5, collections stored Object, requiring explicit casting.
+
+With generics, collections specify element types, preventing runtime errors.
+
+Example:
+
+List<String> names = new ArrayList<>();  
+names.add("Java");  
+String name = names.get(0); // No casting needed  
+This prevents ClassCastException errors.
+
+4.2 Multithreading and Concurrency
+
+-Creating and Managing Threads
+
+Threads in Java allow parallel execution of tasks, improving performance in multi-core systems.
+
+Java provides two ways to create threads:
+
+Extending the Thread class
+
+Implementing the Runnable interface
+
+The start() method runs a thread asynchronously, while run() executes sequentially.
+
+Thread lifecycle: New → Runnable → Running → Terminated.
+
+sleep(), join(), and yield() control thread execution timing.
+
+-Synchronization and Thread Safety
+
+Synchronization ensures that multiple threads do not access shared resources simultaneously, preventing data inconsistency.
+
+synchronized keyword locks an object to allow only one thread at a time.
+
+Methods (synchronized void method()) or blocks (synchronized(this) {}) can be synchronized.
+
+Deadlocks occur when two threads wait indefinitely for each other’s lock.
+
+Thread safety means ensuring correct execution of concurrent code without conflicts.
+
+-Concurrency Utilities
+
+Java provides a concurrency framework in java.util.concurrent for efficient multithreading.
+
+ExecutorService manages thread pools to improve performance.
+
+ScheduledExecutorService schedules tasks at fixed intervals.
+
+CountDownLatch ensures multiple threads wait for a task to complete.
+
+CyclicBarrier synchronizes threads by forcing them to wait at a common point.
+
+4.3 Networking
+
+-Java Networking APIs
+
+Java provides the java.net package for network programming, enabling communication over TCP/IP.
+
+URL and URLConnection allow interaction with web resources.
+
+Sockets facilitate direct client-server communication over the internet.
+
+InetAddress retrieves IP addresses and hostnames.
+
+Java supports TCP (reliable communication) and UDP (faster but unreliable) protocols.
+
+HttpURLConnection is used for HTTP requests (GET, POST).
+
+Networking APIs enable remote data transfer, file sharing, and messaging applications
+
+-Working with URLs and Sockets
+
+Java handles network connections using URLs and sockets.
+
+URL (new URL("https://example.com")) represents web addresses.
+
+openConnection() reads data from websites.
+
+Sockets (Socket) create direct communication channels between two machines.
+
+ServerSocket waits for client connections.
+
+DatagramSockets send data without requiring a persistent connection.
+
+Java automatically manages IP resolution and data transmission.
+
+-Building Client-Server Applications
+
+A client-server model allows two applications to communicate over a network.
+
+The server listens for incoming connections using ServerSocket(port).
+
+The client connects using Socket(host, port).
+
+DataInputStream and DataOutputStream manage message exchange.
+
+A multithreaded server can handle multiple clients simultaneously.
+
+ObjectOutputStream and ObjectInputStream allow object-based communication.
+
+Proper exception handling ensures graceful disconnections.
+
+4.4 Lambda Expressions and Functional Interfaces
+
+-Syntax and Usage of Lambda Expressions
+
+Lambda expressions in Java provide a concise way to express anonymous functions.
+
+They enable functional programming and are mainly used with functional interfaces.
+
+Syntax: (parameters) -> { expression/body }.
+
+Example: (a, b) -> a + b; represents an addition operation.
+
+Used in streams, collections, and event handling.
+
+Reduces boilerplate code in anonymous classes.
+
+Supports single-line or multi-line implementations.
+
+-Predefined Functional Interfaces
+
+Java provides predefined functional interfaces in the java.util.function package.
+
+A functional interface has exactly one abstract method (can have default/static methods).
+
+Common ones include:
+
+Predicate<T> → Boolean condition check (test(T t)).
+
+Consumer<T> → Performs an operation (accept(T t)).
+
+Function<T, R> → Transforms input (apply(T t)).
+
+Supplier<T> → Supplies a value (get()).
+
+Used with lambda expressions to improve readability.
+
+-Method References
+
+Method references provide a shorter syntax for lambda expressions when methods already exist.
+
+Represented using :: (double colon operator).
+
+Used when a lambda calls an existing method without modifications.
+
+Example:
+
+Consumer<String> print = System.out::println;
+Types:
+
+Static method reference → Class::staticMethod
+
+Instance method reference → object::instanceMethod
+
+Constructor reference → Class::new
+
+4.5 Stream API
+
+-Introduction to Streams
+
+The Java Streams API (introduced in Java 8) provides a functional approach to processing data collections.
+
+Allows operations like filtering, mapping, and reducing on elements.
+
+Uses a pipeline-based execution model with methods like stream(), filter(), map(), and reduce().
+
+Supports lazy evaluation, meaning operations execute only when needed.
+
+Helps in writing cleaner, concise, and parallelizable code.
+
+Works with Collections, Arrays, and I/O sources.
+
+Streams are immutable and do not modify the original data source.
+
+-Stream Operations: Filtering, Mapping, Reducing
+
+Stream operations help in processing and transforming data efficiently.
+
+Filtering: Removes unwanted elements using filter(Predicate).
+
+Mapping: Converts elements into different forms using map(Function).
+
+Reducing: Aggregates elements into a single result using reduce().
+
+Example:
+
+List<Integer> numbers = List.of(1, 2, 3, 4);
+int sum = numbers.stream().reduce(0, Integer::sum); 
+These operations enable cleaner, more readable code than traditional loops.
+
+-Parallel Streams
+
+Parallel streams enable multi-threaded execution for processing large collections faster.
+
+Uses Fork/Join framework for concurrent execution.
+
+Can be created using .parallelStream() or .stream().parallel().
+
+Improves performance on multi-core processors.
+
+Example:
+
+List<Integer> numbers = List.of(1, 2, 3, 4);
+int sum = numbers.parallelStream().reduce(0, Integer::sum);
+Not always faster due to thread management overhead.
+
+-Primitive Streams
+
+Primitive streams (IntStream, DoubleStream, LongStream) are specialized streams for primitives.
+
+Avoids boxing/unboxing overhead seen in Stream<Integer>.
+
+Created using IntStream.of(), range(), or generate().
+
+Example:
+
+IntStream.range(1, 5).forEach(System.out::println);
+Useful for numeric computations and performance-critical applications.

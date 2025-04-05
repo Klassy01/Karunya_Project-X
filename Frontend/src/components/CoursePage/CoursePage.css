@@ -1,0 +1,61 @@
+.course-container {
+    padding: 20px;
+    text-align: center;
+    background-color: #f0f0f0;
+    min-height: 100vh;
+  }
+  
+  .search-bar {
+    margin-bottom: 20px;
+  }
+  
+  .search-bar input {
+    padding: 10px;
+    width: 250px;
+    font-size: 16px;
+    border: 1px solid #aaa;
+    border-radius: 5px;
+  }
+  
+  .search-bar button {
+    padding: 10px;
+    margin-left: 10px;
+    cursor: pointer;
+    border: none;
+    background-color: black;
+    color: white;
+    border-radius: 5px;
+  }
+  
+  .popular-courses {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+  }
+  
+  .course-card {
+    width: 180px;
+    padding: 15px;
+    border: 1px solid #ccc;
+    background: white;
+    text-align: center;
+    transition: 0.3s;
+    border-radius: 8px;
+    cursor: pointer;
+  }
+  
+  .course-card:hover {
+    background-color: #ddd;
+    transform: scale(1.05);
+  }
+  
+  .course-card img {
+    width: 70px;
+    height: 70px;
+  }
+  
+  .popular-title {
+    margin-top: 20px;
+    font-size: 22px;
+  }
+  

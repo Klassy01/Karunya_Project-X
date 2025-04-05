@@ -1,0 +1,392 @@
+Module 1: Introduction to Java Programming
+
+1.1 Overview of Java
+
+History and Evolution of Java
+
+Java's evolution began in 1991, when James Gosling, Mike Sheridan, and Patrick Naughton started the Green Project at Sun Microsystems. Originally named Oak, the language was designed for embedded systems and smart appliances, but it failed commercially. In 1995, it was renamed Java and gained immense popularity due to its Write Once, Run Anywhere (WORA) capability, enabled by the Java Virtual Machine (JVM). Java follows an object-oriented paradigm, supporting features like Encapsulation, Inheritance, and Polymorphism. Over time, Java has evolved significantly:
+
+Java 2 (JDK 1.2) introduced the Swing library and Collections Framework.
+
+Java 5 introduced Generics, Enum types, and improved Concurrency APIs.
+
+Java 8 brought Lambda expressions, Streams, and Functional Interfaces, enhancing parallel processing.
+
+Java 11+ focused on performance, modularization (Jigsaw), and cloud-native capabilities.
+Today, Java remains a dominant force in enterprise solutions, Android development, Big Data processing, and cloud-based applications due to its scalability, security, and continuous innovation.
+
+Features and Benefits of Java
+
+Java is a general-purpose, object-oriented programming language known for its robustness, security, and cross-platform capabilities. The Java Virtual Machine (JVM) enables platform independence, allowing Java applications to run seamlessly across different operating systems. Java follows an automatic memory management system (Garbage Collection), optimizing performance by reclaiming unused memory. Multithreading support enables parallel execution of tasks, making Java efficient for high-performance applications. Security features like Bytecode Verification, ClassLoader Isolation, and Java Security Manager protect against malicious attacks. The Java Standard Edition (Java SE) provides a vast API, while Java Enterprise Edition (Java EE) offers advanced features for building scalable web applications. Java’s scalability and reliability make it a preferred choice for cloud-based applications, distributed computing, Big Data, and high-traffic enterprise systems. With continuous improvements like Project Loom (lightweight threads) and GraalVM (performance optimization), Java remains a top programming language 
+
+JVM, JRE, and JDK
+
+Java applications rely on three core components: JVM, JRE, and JDK, each playing a crucial role in execution and development:
+
+JVM (Java Virtual Machine): It acts as an abstraction layer between Java programs and the underlying hardware. It converts bytecode (generated from Java source code) into native machine code using an Interpreter and JIT (Just-In-Time) Compiler. JVM also handles memory management (Garbage Collection), multithreading, and exception handling.
+
+JRE (Java Runtime Environment): It includes the JVM, core libraries, and runtime dependencies required to execute Java applications. It does not contain the Java compiler or development tools.
+
+JDK (Java Development Kit): It is essential for Java development, including the JRE, Java compiler (javac), debugger, JavaDoc, and additional tools. The JDK has different versions: JDK Standard Edition (SE), Enterprise Edition (EE), and Micro Edition (ME), each catering to different development needs.
+
+The JVM enables platform independence, the JRE provides runtime execution, and the JDK is used for developing Java applications.
+
+1.2 Setting Up the Development Environment
+
+-Installing the JDK
+
+Installing the Java Development Kit (JDK) is crucial for Java application development. The process varies slightly across platforms but generally follows these steps:
+
+Choose a JDK distribution: Download from Oracle JDK, OpenJDK (Adoptium, Amazon Corretto, GraalVM, or Azul Zulu), depending on licensing and performance needs.
+
+Download the correct version: Select an LTS version (e.g., Java 8, 11, 17, or 21) for stability or the latest for new features.
+
+Install the JDK:
+
+Windows: Run the installer (.exe) and follow the setup wizard.
+
+macOS/Linux: Use package managers (brew install openjdk or sudo apt install openjdk-XX-jdk).
+
+Configure environment variables:
+
+Set JAVA_HOME to the JDK installation path.
+
+Add the JDK’s bin directory to the system PATH.
+
+Verify installation: Run the following commands in the terminal or command prompt:
+
+java -version
+javac -version
+
+Set up an IDE: Install IntelliJ IDEA, Eclipse, or VS Code for Java development, ensuring the JDK is properly configured in the settings.
+
+After installation, you can compile Java files with javac, execute programs with java, and use advanced tools like JLink (modular applications) and JShell (interactive Java REPL) for efficient development.
+
+-Setting Up an IDE
+
+Setting up an IDE for Java development optimizes workflow by providing intelligent code assistance, debugging, and project management tools. Here’s how to set up a Java IDE:
+
+Choose an IDE based on project requirements:
+
+IntelliJ IDEA: Best for professional Java development with built-in tools.
+
+Eclipse IDE: Open-source, highly customizable with plugins.
+
+VS Code: Lightweight, requires Java extensions (Language Support for Java).
+
+Install the IDE and the required JDK (Java SE, OpenJDK, or Oracle JDK).
+
+Configure the JDK path in the IDE settings:
+
+IntelliJ IDEA: Go to File > Project Structure > SDKs and set the JDK location.
+
+Eclipse: Navigate to Preferences > Java > Installed JREs and add the JDK path.
+
+VS Code: Install "Java Extension Pack" and configure JAVA_HOME.
+
+Create a new Java project and write a basic Java program (HelloWorld.java).
+
+Explore IDE features:
+
+Code completion & refactoring for better productivity.
+
+Built-in debugger to find and fix issues.
+
+Version control (Git) for project collaboration.
+
+After setup, you can efficiently develop, test, and debug Java applications using the IDE’s powerful features. 
+
+-Writing and Running Your First Java Program
+
+To write and execute a Java program properly, follow these structured steps:
+
+Set up your development environment by ensuring JDK and an IDE (like IntelliJ IDEA, Eclipse, or VS Code) are installed.
+
+Create a new Java file in a project directory: HelloWorld.java.
+
+Write a simple Java program with structured code:
+
+// First Java Program
+public class HelloWorld {
+    // Main method - Entry point of Java application
+    public static void main(String[] args) {
+        System.out.println("Hello, Java World! This is my first program.");
+    }
+}
+Compile the Java program using:
+
+javac HelloWorld.java
+This generates a HelloWorld.class file, which contains Java bytecode.
+
+Execute the program in the terminal or command prompt:
+
+java HelloWorld
+Expected Output:
+
+Hello, Java World! This is my first program.
+Using an IDE: If using IntelliJ IDEA or Eclipse, click Run or use the built-in terminal.
+
+By following these steps, you can write, compile, and run Java programs efficiently while understanding the compilation process.
+
+1.3 Basic Syntax and Structure
+
+-Structure of a Java Program
+
+A Java program follows a structured format, ensuring clarity and modularity.
+
+// 1. Package declaration (optional but recommended for organizing code)
+package com.example;
+
+// 2. Import statements (optional, used to include external classes)
+import java.util.Scanner;
+
+// 3. Class declaration (Each Java file should contain a class)
+public class JavaStructure {
+    // 4. Instance variables (optional, store object state)
+    int number;
+
+    // 5. Main method (Essential, where execution starts)
+    public static void main(String[] args) {
+        System.out.println("Understanding Java Program Structure");
+    }
+
+    // 6. Other methods (optional, for additional functionalities)
+    public void display() {
+        System.out.println("This is a method inside the class.");
+    }
+}
+Package groups related classes for better organization.
+
+Import enables the use of external Java libraries.
+
+Class serves as the blueprint for objects.
+
+Instance variables store data at the class level.
+
+Methods define class behavior.
+
+Main method is the entry point for execution.
+
+This structure ensures readability, modularity, and reusability in Java programming.
+
+-Java Keywords and Naming Conventions
+
+Java's reserved keywords are predefined words that have special meaning in the language and cannot be used for naming identifiers. Examples include:
+
+Access Modifiers: public, private, protected
+
+Data Types: int, float, boolean, double
+
+Control Flow: if, else, switch, while, for, return
+
+Object-Oriented Keywords: class, interface, extends, implements
+
+Exception Handling: try, catch, throw, throws, finally
+
+Java Naming Conventions:
+
+Classes & Interfaces: Start with an uppercase letter (BankAccount).
+
+Methods & Variables: Use camelCase (calculateInterest, accountNumber).
+
+Constants: Use static final with uppercase (public static final int MAX_USERS = 1000;).
+
+Packages: Use reverse domain naming (com.company.module).
+
+Boolean Variables: Use is or has (isAvailable, hasData).
+
+Following these conventions ensures clean, readable, and scalable Java code.
+
+-Comments and Documentation
+
+Java provides three types of comments to enhance code readability and documentation:
+
+Single-line comments (//)
+
+Used for brief explanations.
+
+// Loop through the array
+for (int i = 0; i < arr.length; i++) {
+    System.out.println(arr[i]);
+}
+Multi-line comments (/* ... */)
+
+Used to explain complex logic or temporarily disable code blocks.
+
+/* This function performs binary search
+   on a sorted array to find an element */
+JavaDoc comments (/** ... */)
+
+Used for documenting classes, methods, and APIs.
+
+Processed by the Javadoc tool to generate HTML documentation.
+
+/**
+ * This class demonstrates JavaDoc comments.
+ * @author John Doe
+ * @version 1.0
+ */
+public class DocumentationExample {
+    /**
+     * Returns the square of a number.
+     * @param num The number to be squared.
+     * @return Square of num.
+     */
+    public int square(int num) {
+        return num * num;
+    }
+}
+Why Use Comments?
+
+Helps in understanding complex logic.
+
+JavaDoc comments assist in API documentation for developers.
+
+Ensures code maintainability and future modifications.
+
+1.4 Data Types and Variables
+
+-Primitive Data Types
+
+Java has eight primitive data types, optimized for performance and memory usage. They do not support methods like objects.
+
+Integer Types: Store whole numbers.
+
+byte (8-bit, -128 to 127) → Used for memory efficiency.
+
+short (16-bit, -32,768 to 32,767).
+
+int (32-bit, default for whole numbers).
+
+long (64-bit, append L for large numbers: long bigNum = 10000000000L;).
+
+Floating-Point Types: Store decimal numbers.
+
+float (32-bit, needs f suffix: float num = 3.14f;).
+
+double (64-bit, more precise, default for decimals).
+
+Character & Boolean:
+
+char (16-bit, stores a single Unicode character).
+
+boolean (stores true or false).
+
+Example:
+
+boolean isJavaEasy = true;
+long population = 7800000000L;
+double price = 123.456;
+Primitives are faster than objects and stored directly in memory (stack).
+
+-Reference Data Types
+
+Java uses reference types to store complex data structures in heap memory. These include:
+
+String: Immutable sequence of characters.
+
+Arrays: Fixed-length data collections (int[] arr = {1, 2, 3};).
+
+Objects: Instances of user-defined classes.
+
+Wrapper Classes: Primitives in object form (Integer, Double).
+
+Example:
+
+class Student {
+    String name;
+    int age;
+}
+Student s = new Student();  // Stored in heap memory
+Reference types support methods & inheritance and require explicit memory allocation.
+
+-Variable Declaration and Initialization
+
+Java variables require declaration before use and can be of different scopes:
+
+Local Variables: Defined inside methods, must be initialized.
+
+Instance Variables: Defined inside a class, but outside methods.
+
+Static Variables: Shared across all instances of a class (static int count;).
+
+Example:
+
+class Example {
+    int instanceVar;  // Instance variable
+    static int staticVar = 10;  // Static variable
+    public void method() {
+        int localVar = 5;  // Local variable
+    }
+}
+Proper variable management optimizes memory usage.
+
+-Type Casting and Conversion
+
+Type conversion can be automatic or manual, with data loss risks in narrowing.
+
+Widening: No data loss (byte → short → int → long → float → double).
+
+Narrowing: Requires explicit casting (double → float → long → int → short → byte).
+
+Wrapper classes allow conversion between primitives & objects.
+
+Example:
+
+String numStr = "100";
+int num = Integer.parseInt(numStr); // String → int
+Incorrect conversions throw exceptions, so handling is required.
+
+1.5 Operators and Expressions
+
+-Arithmetic, Relational, Logical, and Bitwise Operators
+
+Operators in Java are classified into four key types, each serving different purposes:
+
+Arithmetic Operators: Work on numerical values.
+
+int result = (10 + 5) * 2 / 3 - 1; // 9
+Relational Operators: Return true or false based on conditions.
+
+boolean isGreater = (20 >= 10); // true
+Logical Operators: Combine multiple conditions.
+
+boolean isValid = (true || false) && !false; // true
+Bitwise Operators: Operate at the bit level, useful for optimizations.
+
+int bitwiseOr = 5 | 3; // 0101 | 0011 → 0111 (7)
+Understanding these operators is crucial for complex expressions and performance optimization.
+
+-Operator Precedence and Associativity
+
+Java expressions are evaluated based on precedence and associativity:
+
+Precedence: Controls order of operations (* / % before + -).
+
+Associativity: Handles execution order when precedence is equal.
+
+Example:
+
+int result = 10 - 3 + 2 * 5 / 2; 
+// (2 * 5) / 2 → 5, then 10 - 3 + 5 → 12
+Right-to-left associativity applies to unary and assignment operators (a = b = c).
+
+Using parentheses improves readability and avoids unexpected results.
+
+-Using Expressions in Programs
+
+Java expressions are categorized into arithmetic, logical, and conditional expressions:
+
+Arithmetic Expressions: Perform mathematical operations.
+
+int total = (10 + 5) * 3 / 2;
+Relational Expressions: Compare values.
+
+boolean check = (5 * 2) >= 10; // true
+Logical Expressions: Combine conditions.
+
+boolean status = (true || false) && !false; // true
+Method Call Expressions:
+
+double sqrtValue = Math.sqrt(16);
+Expressions power decision-making in programming.

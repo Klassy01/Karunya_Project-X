@@ -1,0 +1,187 @@
+Module 3 :Core Java APIs
+
+3.1 Strings and String Manipulation
+
+- String Methods and Operations
+
+Since String objects are immutable, any operation that modifies a string creates a new object in memory, impacting performance if used frequently. The .concat() method joins strings but is inefficient for frequent modifications, making StringBuilder and StringBuffer better alternatives.
+
+Strings support regular expressions (regex) through .matches(), .replaceAll(), and .split(), which help in pattern matching and string transformations. Internally, Java optimizes string literals using the String Constant Pool, reducing memory overhead by reusing instances of identical strings.
+
+- String Concatenation and Formatting
+
+String concatenation with + is inefficient in loops because each operation creates new immutable objects. Java optimizes constant concatenations at compile time but dynamic concatenations use StringBuilder internally.
+
+String formatting via String.format() provides flexibility with options like precision control and padding. MessageFormat allows locale-aware formatting, useful for internationalization (i18n). Java 13 introduced text blocks, simplifying multi-line string formatting.
+
+- StringBuilder and StringBuffer
+
+StringBuilder and StringBuffer use mutable character arrays for dynamic string modifications. StringBuffer ensures thread safety by synchronizing method calls, making it ideal for multi-threaded applications.
+
+StringBuilder, introduced in Java 5, eliminates synchronization overhead, improving speed in single-threaded scenarios. These classes provide operations like .append(), .insert(), .delete(), and .reverse(), allowing flexible string manipulation.
+
+3.2 Arrays and Collections
+
+- Single-Dimensional and Multi-Dimensional Arrays
+
+Arrays in Java are objects, allocated dynamically and indexed from 0. Since arrays store elements in contiguous memory, accessing an element using its index is O(1) time complexity.
+
+Multi-dimensional arrays store elements in row-major order, improving cache locality for better performance. However, resizing is not possible, requiring ArrayLists for dynamic sizing. Jagged arrays provide space optimization, reducing unused memory allocation.
+
+- Collections Framework Overview
+
+Java’s Collections Framework is built on a hierarchy of interfaces, including Collection, Set, List, and Map, each designed for specific use cases. Lists maintain order and allow duplicates, Sets ensure unique elements, and Maps store key-value pairs for fast retrieval.
+
+The framework is generic-based, allowing type safety and eliminating the need for explicit type casting. It also supports concurrent and thread-safe variants like CopyOnWriteArrayList and ConcurrentHashMap to handle multi-threaded environments efficiently.
+
+- List, Set, and Map Implementations
+
+Each implementation has different internal mechanisms:
+
+ArrayList: Uses dynamic arrays, fast for random access (O(1)) but slow for insertions/removals (O(n))
+
+LinkedList: Uses doubly linked lists, fast for insertions/removals (O(1)), but slow for random access (O(n))
+
+HashSet: Uses hash tables, O(1) lookup but may suffer collisions
+
+TreeSet: Implements red-black tree, ensuring sorted elements with O(log n) complexity
+
+Maps like HashMap store key-value pairs in buckets, enabling constant-time retrieval, while TreeMap sorts keys in ascending order.
+
+- Iterators and Enhanced For-Loop
+
+The Iterator works on Lists, Sets, and Maps, allowing controlled traversal. Fail-fast iterators (like those in ArrayList, HashMap) throw ConcurrentModificationException if modified during iteration.
+
+The for-each loop (for (Element e : collection)) is syntactic sugar over iterators, making iteration simpler and safer. However, it does not allow element removal, requiring explicit iterator usage instead.
+
+For Maps, iterating over entrySet() (for (Map.Entry<K, V> entry : map.entrySet())) provides direct access to keys and values without multiple lookups.
+
+3.3 Exception Handling
+
+- Checked and Unchecked Exceptions
+
+Checked exceptions are enforced by the compiler to ensure the developer properly handles expected failures, like file access issues (FileNotFoundException). They belong to the Exception class but not RuntimeException.
+
+Unchecked exceptions arise due to coding mistakes and are derived from RuntimeException. They do not need explicit handling, but using try-catch or proper validations prevents program crashes.
+
+Best practices involve handling only recoverable exceptions and using throws for propagation rather than excessive try-catch blocks.
+
+- Try-Catch Blocks and Finally Clause
+
+The finally block is executed whether an exception occurs or not, making it ideal for resource deallocation (closing files, releasing memory, database connections, etc.).
+
+A catch block can handle multiple exceptions, and Java allows multi-catch (catch (IOException | SQLException e)) to avoid redundant code. The throw keyword manually triggers exceptions, while throws in method signatures indicates possible exceptions.
+
+Nested try-catch blocks can be used when handling specific exceptions separately inside different scopes.
+
+- Creating Custom Exceptions
+
+Custom exceptions should be meaningful and descriptive, such as InvalidAgeException or InsufficientFundsException. When an error condition is met, a custom exception is thrown manually using the throw keyword.
+
+Example:
+
+if (balance < 0) {
+    throw new InsufficientFundsException("Negative balance not allowed.");
+}
+By using custom exceptions, we ensure code clarity and modular error handling, making debugging easier.
+
+3.4 Input and Output (I/O) Streams
+
+- Byte and Character Streams
+
+Byte streams use 8-bit data, working directly with files and networks. Common classes include FileInputStream and FileOutputStream.
+
+Character streams use 16-bit Unicode, handling text-based files like .txt or .csv. BufferedReader and FileWriter enhance performance by reducing I/O operations.
+
+Buffered streams wrap lower-level streams, improving efficiency by reducing disk access frequency.
+
+- Reading and Writing Files
+
+Reading and writing files in Java can be done synchronously (blocking) or asynchronously (non-blocking, via NIO). The BufferedReader class improves performance by reading files in chunks instead of character by character.
+
+Example using BufferedReader:
+
+try (BufferedReader br = new BufferedReader(new FileReader("data.txt"))) {
+    String line;
+    while ((line = br.readLine()) != null) {
+        System.out.println(line);
+    }
+} catch (IOException e) {
+    e.printStackTrace();
+}
+For binary data, Byte Streams (FileInputStream, FileOutputStream) handle efficient data transfer without encoding issues.
+
+- Buffered Streams
+
+Buffered Streams wrap lower-level streams to enhance performance by reading/writing multiple bytes at once.
+Example of BufferedReader:
+
+try (BufferedReader br = new BufferedReader(new FileReader("data.txt"))) {
+    String line;
+    while ((line = br.readLine()) != null) {
+        System.out.println(line);
+    }
+} 
+Buffered streams improve read/write efficiency by minimizing direct interactions with disk/memory.
+
+- Serialization and Deserialization
+
+A class must implement the Serializable interface for Java to serialize it.
+Example:
+
+import java.io.*;
+
+class Student implements Serializable {
+    private String name;
+    public Student(String name) { this.name = name; }
+}
+The transient keyword excludes fields from serialization, preventing sensitive data exposure (like passwords).
+
+3.5 Utility Classes
+
+- java.time (Date and Time API)
+
+The java.time API overcomes limitations of java.util.Date and Calendar, which were mutable and error-prone.
+
+Instant represents timestamps based on Unix epoch time (1970-01-01T00:00:00Z).
+
+Duration and Period represent time differences.
+
+ChronoUnit simplifies time unit calculations.
+
+Example: Getting the current date and formatting it:
+
+LocalDate today = LocalDate.now();
+DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
+System.out.println(today.format(formatter));
+This ensures precise date-time handling without time zone ambiguities.
+
+- Math Class
+
+The Math class provides methods for arithmetic, rounding, logarithms, and trigonometry.
+
+Math.ceil() rounds up, while Math.floor() rounds down.
+
+Math.random() generates a pseudo-random number between 0.0 and 1.0.
+
+Math.log() computes the natural logarithm.
+
+Example: Generating a random number between 1 and 100:
+
+int num = (int) (Math.random() * 100) + 1;
+System.out.println(num);
+The class does not require object instantiation since all methods are static.
+
+- Formatting with DecimalFormat and NumberFormat
+
+The NumberFormat class supports currency, percentages, and locale-based formatting.
+
+NumberFormat.getCurrencyInstance() formats numbers as currency symbols.
+
+DecimalFormatSymbols customizes decimal separators and grouping symbols.
+
+Example: Formatting currency based on locale:
+
+NumberFormat currencyFormat = NumberFormat.getCurrencyInstance(Locale.US);
+System.out.println(currencyFormat.format(1234.56)); // Output: $1,234.56
+These classes ensure consistent number representation across applications.
