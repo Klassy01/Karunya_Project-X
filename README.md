@@ -167,3 +167,6 @@ While the model aims to generate relevant MCQs, users should be aware of potenti
 - Be cautious of potential biases and strive to create inclusive and fair assessment items.
 
 - Test the model's outputs across diverse topics to gauge its performance and limitations.
+
+## Drive Link For Model
+https://drive.google.com/file/d/1lU0FfmVBCMJcf-_r4uJNB1EoTCQc9OqG/view?usp=drive_link
