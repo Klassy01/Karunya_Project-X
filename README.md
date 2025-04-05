@@ -1,243 +1,169 @@
-# Karunya_Project-X
-
-# AI Powered Personal Tutor (vLearn)
+# T5-Based Multiple-Choice Question (MCQ) Generator
 
 ## Overview
-vLearn is an AI-powered personal tutor that leverages advanced machine learning techniques to deliver tailored learning experiences. The name "vLearn" stands for "Virtual Learning" and also reflects the concept of "We Learn" collaboratively. Our project, vLearn, adapts courses to each learner's capabilities by generating customized multiple-choice questions (MCQs) using our fine-tuned T5 model.
 
-## Features
-- **Personalized Learning:** Tailors MCQs to each learner’s strengths and weaknesses.
-- **Adaptive Course Content:** Dynamically adjusts course material based on performance.
-- **Collaborative Platform:** Encourages interaction and shared learning experiences.
+This repository contains a fine-tuned [T5 (Text-to-Text Transfer Transformer)](https://huggingface.co/docs/transformers/model_doc/t5) model designed to generate multiple-choice questions (MCQs) from input text. The model is particularly useful for educators and content creators aiming to automate the creation of assessment items.
 
-## Tech Stack & Components
+## Table of Contents
 
-### Frontend
-- **React.js**  
-  Download: [React Official Website](https://reactjs.org/)
+- [Model Details](#model-details)
+  - [Model Description](#model-description)
+  - [Model Sources](#model-sources)
+- [Usage](#usage)
+  - [Installation](#installation)
+  - [Generating MCQs](#generating-mcqs)
+- [Training Details](#training-details)
+  - [Training Data](#training-data)
+  - [Training Procedure](#training-procedure)
+- [Evaluation](#evaluation)
+  - [Testing Data](#testing-data)
+  - [Metrics and Results](#metrics-and-results)
+- [Limitations and Recommendations](#limitations-and-recommendations)
+- [Environmental Impact](#environmental-impact)
+- [Citation](#citation)
+- [Contact](#contact)
 
-### Backend
-- **Node.js**  
-  Download: [Node.js Official Download](https://nodejs.org/en/download/)
+## Model Details
 
-### Database
-- **MongoDB**  
-  Download: [MongoDB Community Download](https://www.mongodb.com/try/download/community)
+### Model Description
 
-### Development Environment
-- **Visual Studio Code**  
-  Download: [Visual Studio Code](https://code.visualstudio.com/download)
+The MCQ Generator is a fine-tuned version of the T5 model, adapted to transform input text into coherent and contextually relevant multiple-choice questions. This adaptation leverages the T5 architecture's text-to-text framework to facilitate educational content creation.
 
-### Model Training
-- **Python Programming**  
-  Download: [Python Downloads](https://www.python.org/downloads/)
-- **T5 Model:** Fine-tuned on our custom dataset for generating MCQs.
+- **Developed by:** [Your Name or Organization]
+- **Contact:** [Your Contact Information]
+- **Model Type:** Text-to-Text Generation
+- **Language:** English
+- **License:** [Specify License, e.g., MIT, Apache 2.0]
+- **Fine-tuned from:** [Base T5 Model Version, e.g., t5-base]
 
-## Setup Instructions
+### Model Sources
 
-### 1. Clone the Repository
+- **Repository:** [Link to your model repository]
+- **Paper (optional):** [Link to any related publication]
+- **Demo (optional):** [Link to an interactive demo]
+
+## Usage
+
+### Installation
+
+To utilize the MCQ Generator, install the necessary Python packages:
+
 ```bash
-git clone https://github.com/Klassy01/Karunya_Project-X.git
-cd your-repo
-```
+pip install torch transformers streamlit
 
-### 2. Frontend Setup
-- Navigate to the frontend directory:
-  ```bash
-  cd frontend
-  ```
-- Install dependencies:
-  ```bash
-  npm install
-  ```
-- Start the development server:
-  ```bash
-  npm start
-  ```
+###Generating MCQs
+##Below is an example of how to use the model to generate MCQs:
 
-### 3. Backend Setup
-- Navigate to the backend directory:
-  ```bash
-  cd ../backend
-  ```
-- Install dependencies:
-  ```bash
-  npm install
-  ```
-- Start the server:
-  ```bash
-  node server.js
-  ```
+```python
+import streamlit as st
+from transformers import T5Tokenizer, T5ForConditionalGeneration
+import torch
 
-### 4. Database Setup
-- Install MongoDB from the [MongoDB Community Download](https://www.mongodb.com/try/download/community) and follow the installation instructions.
-- Update your backend configuration with the MongoDB connection string.
+# Load the tokenizer and model
+model_name = "your-model-repository-id"  # Replace with your model's repository ID
+tokenizer = T5Tokenizer.from_pretrained(model_name)
+model = T5ForConditionalGeneration.from_pretrained(model_name)
 
-### 5. Model Training
-- Install Python from the [Python Downloads](https://www.python.org/downloads/).
-- Create a virtual environment and install required packages:
-  ```bash
-  python -m venv venv
-  source venv/bin/activate  # For Windows: venv\Scripts\activate
-  pip install -r requirements.txt
-  ```
-- Train the T5 model with your dataset:
-  ```bash
-  python train_model.py
-  ```
+def generate_mcqs(input_text, num_questions=5):
+    input_prompt = f"generate {num_questions} mcqs: {input_text}"
+    inputs = tokenizer(input_prompt, return_tensors="pt", max_length=512, truncation=True)
+    model.eval()
+    with torch.no_grad():
+        outputs = model.generate(
+            **inputs,
+            max_length=512,
+            num_return_sequences=num_questions,
+            do_sample=True,
+            top_k=50,
+            top_p=0.95,
+            temperature=0.8
+        )
+    questions = [tokenizer.decode(output, skip_special_tokens=True) for output in outputs]
+    return questions
 
+# Streamlit UI
+st.title("Java Programming MCQ Generator")
 
-# AI Powered Personal Tutor (vLearn) - Project Workflow
+# Sample input text for Java programming
+sample_input = (
+    "Java is a high-level, class-based, object-oriented programming language that is designed "
+    "to have as few implementation dependencies as possible. It is intended to let application "
+    "developers write once, run anywhere (WORA), meaning that compiled Java code can run on all "
+    "platforms that support Java without the need for recompilation. Java applications are typically "
+    "compiled to bytecode that can run on any Java virtual machine (JVM) regardless of the underlying "
+    "computer architecture."
+)
 
-This document outlines the complete implementation steps and architecture of the **vLearn** project — an AI-powered personalized tutor system designed to deliver adaptive learning experiences based on a learner's performance.
+# Text area for user input
+input_text = st.text_area("Enter the text for MCQ generation:", sample_input, height=200)
 
----
+# Slider to select the number of MCQs to generate
+num_questions = st.slider("Number of MCQs to generate:", min_value=1, max_value=10, value=5)
 
-## 1. Frontend Development
+if st.button("Generate MCQs"):
+    if input_text.strip():
+        with st.spinner("Generating MCQs..."):
+            mcqs = generate_mcqs(input_text, num_questions)
+            for idx, mcq in enumerate(mcqs, 1):
+                st.subheader(f"MCQ {idx}")
+                lines = mcq.strip().split('\n')
+                for line in lines:
+                    if line.startswith("Question:"):
+                        st.write(f"**{line}**")
+                    elif line.startswith(("A.", "B.", "C.", "D.")):
+                        st.write(line)
+                    elif line.startswith("Answer:"):
+                        st.success(line)
+    else:
+        st.warning("Please enter some text to generate MCQs.")
 
-**Technologies Used:**  
-- React.js  
-- Node.js
+## Training Details
 
-### Steps:
-- Designed the user interface using **React.js**, offering a smooth and interactive experience.
-- Implemented features like course selection, assessments, and progress tracking.
-- React components dynamically load content such as courses, quizzes, and module statuses.
-- The frontend communicates with the backend via API calls for data fetch and submission.
-- **Node.js** serves as the backend runtime environment to build APIs for course retrieval, MCQ generation, user management, etc.
+### Training Data
 
----
+The model was fine-tuned on a dataset comprising educational texts and corresponding multiple-choice questions across various subjects, ensuring a broad understanding of different topics.
 
-## 2. Course Generation
+### Training Procedure
 
-**Source:**  
-- Open-source educational materials and curated topic outlines.
+The fine-tuning process involved:
 
-### Steps:
-- Collected information from reliable sources like GitHub repositories, MOOCs, and documentation.
-- Structured the collected data into six primary modules for each subject.
-- Each module contains 5–6 subtopics, making the content manageable and learner-friendly.
-- Content was written in `.md` files for easy formatting, readability, and storage in MongoDB.
+- **Preprocessing:** Formatting input texts with prompts indicating MCQ generation tasks.
 
----
+- **Hyperparameters:**
+  - **Batch size:** [Specify batch size]
+  - **Learning rate:** [Specify learning rate]
+  - **Number of epochs:** [Specify number of epochs]
 
-## 3. Dataset Generation (MCQs)
+- **Optimization:** Utilized [Optimizer Name, e.g., AdamW] with appropriate learning rate scheduling.
 
-### Steps:
-- Manually and programmatically generated MCQs based on the course content.
-- Categorized the questions into three difficulty levels: **Basic**, **Intermediate**, and **Advanced**.
-- Ensured a variety of question styles including factual, conceptual, and application-based.
-- Saved the dataset in structured JSON format to be used for model fine-tuning.
+## Evaluation
 
----
+### Testing Data
 
-## 4. Model Fine-Tuning (T5)
+The model was evaluated using a separate dataset containing educational texts and expert-crafted MCQs to assess its performance.
 
-**Model Used:**  
-- T5 (Text-to-Text Transfer Transformer)
-- ollama model of Deepseek-r1:7b(For the personal chatbot)
+### Metrics and Results
 
-### Steps:
-1. Loaded the pre-trained T5 model using the `transformers` library from Hugging Face.
-2. Preprocessed the MCQ dataset to match the T5 input-output format.
-   - Input: Text passages or key points.
-   - Output: MCQs in question-answer format.
-3. Split the dataset into training and validation sets.
-4. Used GPU-based training environment for faster fine-tuning.
-5. Trained the model using a learning rate scheduler, early stopping, and evaluation metrics.
-6. Saved the fine-tuned model for deployment.
+Evaluation metrics included:
 
----
+- **BLEU Score:** [Insert score]
+- **ROUGE Score:** [Insert score]
+- **Human Evaluation:** [Summarize findings, e.g., "80% of generated questions were deemed appropriate by experts."]
 
-## 5. Integration: Model + Frontend + Backend
+## Limitations and Recommendations
 
-**Database:** MongoDB  
-**Tools:** Mongoose (for MongoDB), Express.js, REST APIs
+While the model aims to generate relevant MCQs, users should be aware of potential biases and limitations:
 
-### Steps:
-- Deployed the model as a Flask or FastAPI service.
-- Created API endpoints for MCQ generation based on course/module input.
-- Frontend sends user data and course context to the backend.
-- Backend forwards the request to the model and receives generated MCQs.
-- MongoDB stores:
-  - Course `.md` files
-  - User progress and scores
-  - Generated MCQs per user
-- Used MongoDB Atlas (cloud-based cluster) for seamless integration and scalability.
+- **Biases:** Outputs may reflect biases present in the training data. It's essential to review generated questions for cultural, gender, or other biases.
 
----
+- **Accuracy:** The model may occasionally produce questions that are ambiguous or not entirely aligned with the input text.
 
-## 6. Additional Features
+- **Context Limitation:** The model's understanding is based solely on the provided input text and does not incorporate external knowledge beyond its training data.
 
-### Chatbot Support
-- Integrated **DeepSeek R1 7B** model using Ollama for natural language conversations.
-- Used for:
-  - Answering course-related doubts
-  - Providing motivational and study tips
-  - Guiding through the course content
+**Recommendations:**
 
-### AI Assistant
-- AI suggests personalized study plans based on learner's performance.
-- Adaptive MCQs to improve weak areas identified by the system.
+- Manually review and edit generated MCQs to ensure clarity and relevance.
 
----
+- Be cautious of potential biases and strive to create inclusive and fair assessment items.
 
-## 7. Future Scope
-
-### a. Community Learning
-- Integrate discussion forums or chat groups for learners to collaborate.
-- Peer-to-peer help and shared resources.
-
-### b. Video Lessons
-- Add curated video lessons for each module.
-- Improve comprehension with visual content.
-
-### c. Adaptive Courses
-- Use learner's quiz performance to dynamically alter course difficulty.
-- Introduce personalized learning paths.
-
-### d. Coding Tests and Interactive Games
-- Include real-time coding environments for hands-on practice.
-- Develop interactive quizzes and games to make learning fun and effective.
-
----
-
-## 8. Model Optimization with OpenVINO IR
-
-**Framework:** OpenVINO Toolkit (Intel)
-
-### Purpose:
-To optimize the performance of the fine-tuned T5 model for deployment on edge devices or in resource-constrained environments.
-
-### Steps:
-1. Converted the fine-tuned T5 model to **ONNX** format using `transformers` and `onnxruntime`.
-2. Used **OpenVINO Model Optimizer** to convert the ONNX model to **Intermediate Representation (IR)** format.
-   - IR includes `.xml` and `.bin` files representing the model structure and weights.
-3. Deployed the model using **OpenVINO Inference Engine** for:
-   - Faster inference speed
-   - Lower latency
-   - Efficient CPU usage
-4. Integrated OpenVINO runtime into the backend service to serve optimized model predictions.
-
-### Benefits:
-- Enhanced performance on Intel hardware (CPUs, VPUs, integrated GPUs)
-- Reduced model size and faster load times
-- Cost-effective inference on low-resource machines
-
----
-
-## Conclusion
-
-The **vLearn** project offers a comprehensive, scalable, and intelligent solution for personalized education. With adaptive content, automated assessments, and chatbot assistance, it redefines how students learn and engage with educational material.
-
-
-## Team
-**Karunya_Project_x**
-
-- Aparna J
-- David Jayaraj A
-- Jerwin Titus D
-
-## For more info Contact
- Email - aparna6024@gmail.com
- Phone - +91 9176398947
+- Test the model's outputs across diverse topics to gauge its performance and limitations.
