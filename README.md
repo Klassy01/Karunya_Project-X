@@ -178,8 +178,8 @@ While the model aims to generate relevant MCQs, users should be aware of potenti
 
 For queries or collaboration, reach out to:
 
-- **Email:** [Your Contact Email]
-- **GitHub:** [Link to your GitHub]
+- **Email:** [titusjerwin@gmail.com]
+- **GitHub:** [https://github.com/JerwinTitus2006]
 
 ## Drive Link for Model
 
