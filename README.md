@@ -116,7 +116,7 @@ if st.button("Generate MCQs"):
                         st.success(line)
     else:
         st.warning("Please enter some text to generate MCQs.")
-
+```python
 ## Training Details
 
 ### Training Data
